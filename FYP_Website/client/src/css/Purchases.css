@@ -1,0 +1,166 @@
+/* .purchases-container styles */
+.purchases-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 20px;
+
+}
+
+/* .new-Purchase styles */
+.new-Purchase {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.section-header {
+  background-color: #007bff; /* Blue header background */
+  padding: 10px 20px;
+  margin: 0;
+  cursor: pointer;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  color: white; /* White text color */
+}
+
+/* .form-container styles */
+.form-container {
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+/* .byProduct-container styles */
+.byProduct-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+/* .byProduct-card styles */
+.byProduct-card {
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  background-color: white;
+  max-width: 500px;
+  padding: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Input styles */
+#purchases-page-container input[type="text"],
+#purchases-page-container input[type="number"],
+#purchases-page-container input[type="date"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Submit button styles */
+.submit-btn {
+  width: 100%;
+  background-color: #28a745; /* Green button */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth hover transition */
+}
+
+.submit-btn:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+/* Grid styles */
+.byProduct-grid {
+  display: grid;
+  gap: 20px; /* Increased gap between items */
+  grid-template-columns: repeat(2, 1fr); /* Display two orders horizontally */
+}
+
+/* Select and input styles */
+.select-name,
+#purchases-page-container input[type="text"],
+#purchases-page-container input[type="number"],
+#purchases-page-container input[type="date"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Sort dropdown container styles */
+.sort-container {
+  display: flex;
+  flex-direction: column; /* Change to column direction */
+  margin-bottom: 20px;
+}
+
+/* Sort dropdown label styles */
+.sort-container label {
+  font-size: 16px;
+  margin-bottom: 5px; /* Add margin bottom */
+}
+
+/* Sort dropdown select styles */
+#sort-select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 10px; /* Add margin bottom */
+}
+
+/* Sort direction radio button container styles */
+.sort-direction {
+  display: flex;
+  flex-direction: column; /* Change to column direction */
+}
+
+/* Sort direction radio button label styles */
+.sort-direction label {
+  font-size: 16px;
+  margin-bottom: 5px; /* Add margin bottom */
+}
+
+/* Sort direction radio button input styles */
+.sort-direction input[type="radio"] {
+  margin-right: 5px;
+}
+
+/* Select and input styles */
+.select-name,
+#purchases-page-container input[type="text"],
+#purchases-page-container input[type="number"],
+#purchases-page-container input[type="date"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  font-size: 16px;
+  color: #333;
+}

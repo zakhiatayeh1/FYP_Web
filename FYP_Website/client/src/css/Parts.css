@@ -1,0 +1,50 @@
+.parts-page {
+    padding: 20px;
+}
+
+.parts-header {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #000; /* Add this line */
+}
+
+.create-part-container {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.part-search-container{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.part-search-container input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #dee2e6;
+    width: 70%;
+    box-sizing: border-box;
+}
+
+.parts-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.create-part-button {
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none; /* Remove underline from link */
+}
+
+.create-part-button:hover {
+    background-color: #0056b3;
+}
