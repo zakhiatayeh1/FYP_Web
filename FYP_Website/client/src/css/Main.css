@@ -31,7 +31,7 @@ body{
     padding:0;
 }
 
-.dashboard-main-container {
+.dashboard-main-container{
     display: flex;
     height: 100%;
     margin:0;

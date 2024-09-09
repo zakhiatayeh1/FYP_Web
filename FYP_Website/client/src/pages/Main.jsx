@@ -42,7 +42,7 @@ export default function Main() {
    <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen}/>
    <div className={`body-container ${sidebarOpen ? 'sidebar-open' : ''}`}>
         <div className="scrollable-content">
-            <Routes>
+            <Routes>  
                   <Route path="/" element={<Home />} />
                   <Route path="/employees" element={<Employees />} />
                   <Route path="tasks" element={<TaskAssignment />} />
