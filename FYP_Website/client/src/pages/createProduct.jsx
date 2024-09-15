@@ -18,7 +18,10 @@ function CreateProduct() {
     const [imageUrl, setImageUrl] = useState('');
     const [imageUrlError, setImageUrlError] = useState(null);
     const [productTypes, setProductTypes] = useState([]);
-
+    const [production_time, setproduction_time] = useState('');
+    const [production_timeError, setproduction_timeError] = useState(null);
+    const [percentage, setpercentage] = useState('');
+    const [percentageError, setpercentageError] = useState(null);
     useEffect(() => {
         axios.get('http://localhost:3001/bikeTypes')
             .then((response) => {
@@ -47,6 +50,7 @@ function CreateProduct() {
             setProductTypeError('Please select a product type'); // set error if input is empty
         }
     };
+    
 
     const handleNameChange = (e) => {
         setName(e.target.value);
@@ -56,6 +60,24 @@ function CreateProduct() {
             setNameError('Please enter the name'); // set error if input is empty
         }
     };
+
+    const handleProduction_TimeChange = (e) => {
+        setproduction_time(e.target.value);
+        if (e.target.value) {
+            setproduction_timeError(''); // clear error if input is not empty
+        } else {
+            setproduction_timeError('Please enter the name'); // set error if input is empty
+        }
+    };
+    const handlePercentageChange = (e) => {
+        setpercentage(e.target.value);
+        if (e.target.value) {
+            setpercentageError(''); // clear error if input is not empty
+        } else {
+            setpercentageError('Please enter the name'); // set error if input is empty
+        }
+    };
+
 
     const handleModelNumberChange = (e) => {
         setModelNumber(e.target.value);
@@ -111,9 +133,15 @@ function CreateProduct() {
         if (!price) {
             setPriceError('Please enter the price');
         }
+        if (!production_time) {
+            setproduction_timeError('Please enter the production time');
+        }
+        if (!percentage) {
+            setpercentageError('Please enter the percentage');
+        }
 
         // Only submit the form if no fields are empty
-        if (imageUrl && selectedProductType && name && modelNumber && description && price) {
+        if (imageUrl && selectedProductType && name && modelNumber && description && price && production_time && percentage) {
             axios.post('http://localhost:3001/createProduct', {
                 bike_category_id: selectedProductType,
                 name: name,
@@ -121,6 +149,8 @@ function CreateProduct() {
                 description: description,
                 price: price,
                 image_url: imageUrl,
+                production_time : production_time,
+                percentage : percentage
             })
             .then(response => {
                 console.log(response);
@@ -208,6 +238,21 @@ function CreateProduct() {
                     </label>
                 </div>
                     {imageUrlError && <p className="error">{imageUrlError}</p>}
+
+                    <div className='input-group'>
+                    <label>
+                        Production Time:
+                        <input type="number" value={production_time} onChange={handleProduction_TimeChange} />
+                    </label>
+                </div>
+                    {production_timeError && <p className="error">{production_timeError}</p>}
+                    <div className='input-group'>
+                    <label>
+                        Percentage:
+                        <input type="number" value={percentage} onChange={handlePercentageChange} />
+                    </label>
+                </div>
+                    {percentageError && <p className="error">{percentageError}</p>}
 
                 <button type="submit">Create</button>
             </form>

@@ -14,9 +14,9 @@ const db = mysql.createConnection({
 // Create a new product
 productRouter.post('/createProduct', (req, res) => {
     // Extract data from the request body
-    const { name, bike_category_id, model_number, description, price, image_url } = req.body;
+    const { name, bike_category_id, model_number, description, price, image_url, production_time, percentage } = req.body;
     // Insert the new product into the database
-    db.query('INSERT INTO model(name, bike_category_id, description, model_number, price, image_url) VALUES (?, ?, ?, ?, ?, ?)', [name, bike_category_id, description, model_number, price, image_url], (err, result) => {
+    db.query('INSERT INTO model(name, bike_category_id, description, model_number, price, image_url, production_time, percentage) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', [name, bike_category_id, description, model_number, price, image_url, production_time, percentage], (err, result) => {
         if (err) {
             console.error('Error adding product to database:', err);
             res.status(500).send('Error adding product');
@@ -45,9 +45,9 @@ productRouter.get('/getProducts', (req, res) => {
 productRouter.put('/editProduct/:id', (req, res) => {
     const id = req.params.id;
     console.log(id);
-    const { image_url, bike_category_id, name, model_number, description, price } = req.body;
-    const query = 'UPDATE model SET image_url = ?, bike_category_id = ?, name = ?, model_number = ?, description = ?, price = ? WHERE model_id = ?';
-    const values = [image_url, bike_category_id, name, model_number, description, price, id];
+    const { image_url, bike_category_id, name, model_number, description, price, production_time, percentage } = req.body;
+    const query = 'UPDATE model SET image_url = ?, bike_category_id = ?, name = ?, model_number = ?, description = ?, price = ?, production_time = ?, percentage = ? WHERE model_id = ?';
+    const values = [image_url, bike_category_id, name, model_number, description, price, production_time, percentage, id];
     db.query(query, values, (err, result) => {
         if (err) {
             console.error('Error updating product:', err);

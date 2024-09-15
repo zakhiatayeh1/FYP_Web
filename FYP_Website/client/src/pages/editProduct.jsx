@@ -28,13 +28,34 @@ function EditProduct() {
     const [error, setError] = useState(null);
     const [productTypes, setProductTypes] = useState([]);
     const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
-
+    const [production_time, setproduction_time] = useState(product.production_time);
+    const [production_timeError, setproduction_timeError] = useState(null);
+    const [percentage, setpercentage] = useState(product.percentage);
+    const [percentageError, setpercentageError] = useState(null);
     const handleImageUrlChange = (e) => {
         setImageUrl(e.target.value);
         if (e.target.value) {
             setImageUrlError(''); // clear error if input is not empty
         } else {
             setImageUrlError('Please enter the image URL'); // set error if input is empty
+        }
+    };
+
+
+    const handleProduction_TimeChange = (e) => {
+        setproduction_time(e.target.value);
+        if (e.target.value) {
+            setproduction_timeError(''); // clear error if input is not empty
+        } else {
+            setproduction_timeError('Please enter the Production Time'); // set error if input is empty
+        }
+    };
+    const handlePercentageChange = (e) => {
+        setpercentage(e.target.value);
+        if (e.target.value) {
+            setpercentageError(''); // clear error if input is not empty
+        } else {
+            setpercentageError('Please enter the Percentage'); // set error if input is empty
         }
     };
 
@@ -122,14 +143,19 @@ function EditProduct() {
         if (!price) {
             setPriceError('Please enter the price');
         }
-
-        if (name === product.name && selectedProductType === product.type && modelNumber === product.modelNumber && imageUrl === product.image && description === product.description && price === product.price) {
+        if (!production_time) {
+            setproduction_timeError('Please enter the production time');
+        }
+        if (!percentage) {
+            setpercentageError('Please enter the percentage');
+        }
+        if (name === product.name && selectedProductType === product.type && modelNumber === product.modelNumber && imageUrl === product.image && description === product.description && price === product.price && production_time === product.production_time && percentage === product.percentage) {
             setError('No changes were made');
             console.log('No changes were made');
             return;
         }
 
-        if (!productTypeError && !nameError && !modelNumberError && !descriptionError && !priceError && !imageUrlError) {
+        if (!productTypeError && !nameError && !modelNumberError && !descriptionError && !priceError && !imageUrlError && !production_timeError && !percentageError) {
             axios.put(`http://localhost:3001/editProduct/${id}`, {
                 name: name,
                 bike_category_id: selectedProductType,
@@ -137,6 +163,8 @@ function EditProduct() {
                 description: description,
                 price: price,
                 image_url: imageUrl,
+                production_time : production_time,
+                percentage : percentage,
             })
             .then(response => {
                 console.log(response);
@@ -236,6 +264,20 @@ function EditProduct() {
                         </label>
                     </div>
                     {imageUrlError && <p className="error">{imageUrlError}</p>}
+                    <div className='input-group'>
+                    <label>
+                        Production Time:
+                        <input type="number" value={production_time} onChange={handleProduction_TimeChange} />
+                    </label>
+                </div>
+                    {production_timeError && <p className="error">{production_timeError}</p>}
+                    <div className='input-group'>
+                    <label>
+                        Percentage:
+                        <input type="number" value={percentage} onChange={handlePercentageChange} />
+                    </label>
+                </div>
+                    {percentageError && <p className="error">{percentageError}</p>}
                     <br />
                     <button className='btn btn-primary' type="submit">Edit</button>
                     <button className='btn btn-danger' type="button" onClick={()=> setOpenDeleteDialog(true)}>Delete</button>
