@@ -43,10 +43,10 @@ partRouter.get('/parts/:id', (req, res) => {
 // Create a new part
 partRouter.post('/createPart', (req, res) => {
     // Extract data from the request body
-    const { name, part_category_id, model_number, description, image_url } = req.body;
+    const { name, part_category_id, model_number, description, image_url, weight } = req.body;
     console.log(part_category_id)
     // Insert the new part into the database
-    db.query('INSERT INTO component_type(name, part_category_id, description, model_number, image_url) VALUES (?, ?, ?, ?, ?)', [name, part_category_id, description, model_number, image_url], (err, result) => {
+    db.query('INSERT INTO component_type(name, part_category_id, description, model_number, image_url, weight) VALUES (?, ?, ?, ?, ?, ?)', [name, part_category_id, description, model_number, image_url, weight], (err, result) => {
         if (err) {
             console.error('Error adding component to database:', err);
             res.status(500).send('Error adding component');
@@ -61,10 +61,10 @@ partRouter.post('/createPart', (req, res) => {
 // Update a part
 partRouter.put('/editPart/:id', (req, res) => {
     const id = req.params.id;
-    const { image_url, part_category_id, name, model_number, description } = req.body;
+    const { image_url, part_category_id, name, model_number, description, weight } = req.body;
     console.log(part_category_id)
-    const query = 'UPDATE component_type SET image_url = ?, part_category_id = ?, name = ?, model_number = ?, description = ? WHERE component_type_id = ?';
-    const values = [image_url, part_category_id, name, model_number, description, id];
+    const query = 'UPDATE component_type SET image_url = ?, part_category_id = ?, name = ?, model_number = ?, description = ?, weight = ? WHERE component_type_id = ?';
+    const values = [image_url, part_category_id, name, model_number, description, weight, id];
     db.query(query, values, (err, result) => {
         if (err) {
             console.error('Error updating part:', err);

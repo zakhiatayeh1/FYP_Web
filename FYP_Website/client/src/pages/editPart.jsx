@@ -15,6 +15,8 @@ function EditPart() {
     const id = part.id;
     const [selectedPartType, setSelectedPartType] = useState(part.category_id);
     const [name, setName] = useState(part.name);
+    const [weight, setweight] = useState(part.weight);
+    const [weightError, setweightError] = useState(null);
     const [modelNumber, setModelNumber] = useState(part.modelNumber);
     const [description, setDescription] = useState(part.description);
     const [partTypeError, setPartTypeError] = useState(null);
@@ -57,7 +59,16 @@ function EditPart() {
             setNameError('Please enter the name'); // set error if input is empty
         }
     };
+    const handleWeightChange = (e) => {
+        setweight(e.target.value);
+        if (e.target.value) {
+            setweightError(''); // clear error if input is not empty
+        } else {
+            setweightError('Please enter the weight'); // set error if input is empty
+        }
+    };
     
+
     const handlePartTypeChange = (e) => {
         const newPartType = e.target.value;
         setSelectedPartType(newPartType);
@@ -110,14 +121,19 @@ function EditPart() {
         if (!description) {
             setDescriptionError('Please enter the description');
         }
+        if (!weight) {
+            setweightError('Please enter the weight');
+        }
+    
 
-        if (name === part.name && selectedPartType === part.type && modelNumber === part.modelNumber && imageUrl === part.image && description === part.description) {
+
+        if (name === part.name && selectedPartType === part.type && modelNumber === part.modelNumber && imageUrl === part.image && description === part.description && weight === part.weight) {
             setError('No changes were made');
             console.log('No changes were made');
             return;
         }
 
-        if (!partTypeError && !nameError && !modelNumberError && !descriptionError && !imageUrlError) {
+        if (!partTypeError && !nameError && !modelNumberError && !descriptionError && !imageUrlError && !weightError) {
             console.log('hello');
             axios.put(`http://localhost:3001/editPart/${part.id}`, {
                 name: name,
@@ -125,6 +141,7 @@ function EditPart() {
                 model_number: modelNumber,
                 description: description,
                 image_url: imageUrl,
+                weight: weight,
             })
             .then(response => {
                 console.log(response);
@@ -139,7 +156,7 @@ function EditPart() {
     
     function handleDelete() {
         // Send a delete request to the server
-        axios.delete(`http://localhost:3001/deletepart/${part.id}`)
+        axios.delete(`http://localhost:3001/parts/${part.id}`)
         .then(response => {
             console.log(response);
             navigate('/main/parts');
@@ -220,6 +237,13 @@ function EditPart() {
                             </label>
                         </div>
                         {imageUrlError && <p className="error">{imageUrlError}</p>}
+                        <div className='input-group'>
+                        <label>
+                            Weight in KG:
+                            <input type="text" value={weight} onChange={handleWeightChange} />
+                        </label>
+                    </div>
+                        {weightError && <p className="error">{weightError}</p>}
                         <br />
                         <button className='btn btn-primary' type="submit">Edit</button>
                         <button className='btn btn-danger' type="button" onClick= {() => setOpenDeleteDialog(true)}>Delete</button>

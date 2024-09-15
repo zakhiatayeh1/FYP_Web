@@ -16,7 +16,8 @@ function CreatePart() {
     const [imageUrl, setImageUrl] = useState('');
     const [imageUrlError, setImageUrlError] = useState(null);
     const [partTypes, setPartTypes] = useState([]);
-
+    const [weight, setweight] = useState('');
+    const [weightError, setweightError] = useState(null);
     useEffect(() => {
         axios.get('http://localhost:3001/partTypes')
           .then((response) => {
@@ -71,6 +72,14 @@ function CreatePart() {
             setDescriptionError('Please enter the description'); // set error if input is empty
         }
     };
+    const handleWeightChange = (e) => {
+        setweight(e.target.value);
+        if (e.target.value) {
+            setweightError(''); // clear error if input is not empty
+        } else {
+            setweightError('Please enter the weight'); // set error if input is empty
+        }
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -95,15 +104,19 @@ function CreatePart() {
         if (!description) {
             setDescriptionError('Please enter the description');
         }
+        if (!weight) {
+            setweightError('Please enter the weight');
+        }
     
         // Only submit the form if no fields are empty
-        if (imageUrl && selectedPartType && name && modelNumber && description) {
+        if (imageUrl && selectedPartType && name && modelNumber && description && weight) {
             axios.post('http://localhost:3001/createPart', {
                 part_category_id: selectedPartType,
                 name: name,
                 model_number: modelNumber,
                 description: description,
                 image_url: imageUrl,
+                weight : weight,
             })
             .then(response => {
                 console.log(response);
@@ -180,6 +193,13 @@ function CreatePart() {
                         </label>
                     </div>
                         {imageUrlError && <p className="error">{imageUrlError}</p>}
+                        <div className='input-group'>
+                        <label>
+                            Weight in KG:
+                            <input type="number" value={weight} onChange={handleWeightChange} />
+                        </label>
+                    </div>
+                        {weightError && <p className="error">{weightError}</p>}
                         <button className='btn btn-primary' type="submit">Create</button>
                     
                 </form>

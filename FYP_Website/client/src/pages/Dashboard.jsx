@@ -437,10 +437,10 @@ const Dashboard = () => {
   const [totalExpenses, setTotalExpenses] = useState(0);
   const [inventoryData, setInventoryData] = useState([]);
   const [inventoryBikeData, setInventoryBikeData] = useState([]);
-  const [selectedPart, setSelectedPart] = useState('');
-  const [selectedBike, setSelectedBike] = useState('');
-  const [selectedSupplier, setSelectedSupplier] = useState('');
+  const [selectedPart, setSelectedPart] = useState(inventoryData.length > 0 ? inventoryData[0].unit : '');
 
+  const [selectedBike, setSelectedBike] = useState(inventoryBikeData.length > 0 ? inventoryBikeData[0].unit : '');
+  const [selectedSupplier, setSelectedSupplier] = useState(suppliersData.length > 0 ? suppliersData[0].supplier : '');
   useEffect(() => {
     const fetchInventoryData = async () => {
       const response = await axios.get('http://localhost:3001/getPartWarehouses');
@@ -655,7 +655,7 @@ const Dashboard = () => {
         </div>
 
         {/* Inventory Section */}
-        <div className="chart-container" id="parts-inventory-section">
+        {/* <div className="chart-container" id="parts-inventory-section">
     <div className="dropdown-container">
         <select value={selectedPart} onChange={e => setSelectedPart(e.target.value)} style={{ margin: '10px' }}>
             <option value="">All Parts</option>
@@ -687,75 +687,122 @@ const Dashboard = () => {
                 </div>
         ))}
     </div>
-</div>
-        <div className="chart-container" id="bikes-inventory-section">
-    <div className="dropdown-container">
-        <select value={selectedBike} onChange={e => setSelectedBike(e.target.value)} style={{ margin: '10px' }}>
-            <option value="">All Bikes</option>
-            {inventoryBikeData.map((item, index) => (
-                <option key={index} value={item.unit}>{item.unit}</option>
-            ))}
-        </select>
-    </div>
-    <div className="chart">
-        <h2>Inventory Breakdown for the Bikes warehouse</h2>
-        <BarChart width={800} height={400} data={inventoryBikeData} layout="vertical">
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis type="number" />
-            <YAxis dataKey="unit" type="category" />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey="currentStockBikePercentage" fill="#3498db" name="Current Stock Percentage" />
-        </BarChart>
-    </div>
-    <div className="stat-box-container">
-        {inventoryBikeData.filter(item => item.unit === selectedBike || selectedBike === '')
-            .map((item, index) => (
-                <div className="stat-box inventory" key={index} style={{ backgroundColor: colorfulBeautifulColors[index % colorfulBeautifulColors.length] }}>
-                    <FontAwesomeIcon icon={faBox} className="stat-icon" />
-                    <div className="stat-content">
-                        <h3>{item.unit}</h3>
-                        <p>Available Space: {item.capacity - item.currentStock} units</p>
+</div> */}
+  <div className="chart-container" id="parts-inventory-section">
+        <div className="dropdown-container">
+            <select 
+                value={selectedPart} 
+                onChange={e => setSelectedPart(e.target.value)} 
+                style={{ margin: '10px' }}
+            >
+                <option value="" disabled>Select a Part</option>
+                {inventoryData.map((item, index) => (
+                    <option key={index} value={item.unit}>{item.unit}</option>
+                ))}
+            </select>
+        </div>
+        <div className="chart">
+            <h2>Inventory Breakdown for the Parts warehouse</h2>
+            <BarChart width={800} height={400} data={inventoryData} layout="vertical">
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis type="number" />
+                <YAxis dataKey="unit" type="category" />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="currentStockPercentage" fill="#8884d8" name="Current Stock Percentage" />
+            </BarChart>
+        </div>
+        <div className="stat-box-container">
+            {inventoryData.filter(item => item.unit === selectedPart)
+                .map((item, index) => (
+                    <div className="stat-box inventory" key={index} style={{ backgroundColor: colorfulBeautifulColors[index % colorfulBeautifulColors.length] }}>
+                        <FontAwesomeIcon icon={faBox} className="stat-icon" />
+                        <div className="stat-content">
+                            <h3>{item.unit}</h3>
+                            <p>Available Space: {item.capacity - item.currentStock} units</p>
+                        </div>
                     </div>
-                </div>
-        ))}
+            ))}
+        </div>
     </div>
-</div>
+    (
+    <div className="chart-container" id="bikes-inventory-section">
+        <div className="dropdown-container">
+            <select 
+                value={selectedBike} 
+                onChange={e => setSelectedBike(e.target.value)} 
+                style={{ margin: '10px' }}
+            >
+                {/* Handle case when inventoryBikeData is empty */}
+                <option value="" disabled>{inventoryBikeData.length > 0 ? 'Select a Bike' : 'No Bikes Available'}</option>
+                {inventoryBikeData.map((item, index) => (
+                    <option key={index} value={item.unit}>{item.unit}</option>
+                ))}
+            </select>
+        </div>
+        <div className="chart">
+            <h2>Inventory Breakdown for the Bikes warehouse</h2>
+            <BarChart width={800} height={400} data={inventoryBikeData} layout="vertical">
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis type="number" />
+                <YAxis dataKey="unit" type="category" />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="currentStockBikePercentage" fill="#3498db" name="Current Stock Percentage" />
+            </BarChart>
+        </div>
+        <div className="stat-box-container">
+            {inventoryBikeData.filter(item => item.unit === selectedBike)
+                .map((item, index) => (
+                    <div className="stat-box inventory" key={index} style={{ backgroundColor: colorfulBeautifulColors[index % colorfulBeautifulColors.length] }}>
+                        <FontAwesomeIcon icon={faBox} className="stat-icon" />
+                        <div className="stat-content">
+                            <h3>{item.unit}</h3>
+                            <p>Available Space: {item.capacity - item.currentStock} units</p>
+                        </div>
+                    </div>
+            ))}
+        </div>
+    </div>
         {/* Suppliers Section */}
         <div className="chart-container" id="suppliers-section">
-    <div className="dropdown-container">
-        <select value={selectedSupplier} onChange={e => setSelectedSupplier(e.target.value)} style={{ margin: '10px' }}>
-            <option value="">All Suppliers</option>
-            {suppliersData.map((supplier, index) => (
-                <option key={index} value={supplier.supplier}>{supplier.supplier}</option>
-            ))}
-        </select>
-    </div>
-    <div className="chart">
-        <h2>Supplier Orders</h2>
-        <BarChart width={800} height={400} data={suppliersData}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="supplier" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey="orders" fill="#ef476f" name="Orders" />
-            <Bar dataKey="deliveryTime" fill="#8884d8" name="Avg. Delivery Time (Days)" />
-        </BarChart>
-    </div>
-    <div className="stat-box-container">
-        {suppliersData.filter(supplier => supplier.supplier === selectedSupplier || selectedSupplier === '')
-            .map((supplier, index) => (
-                <div className="stat-box suppliers" key={index} style={{ backgroundColor: colorfulBeautifulColors[index % colorfulBeautifulColors.length] }}>
-                    <FontAwesomeIcon icon={faShoppingCart} className="stat-icon" />
-                    <div className="stat-content">
-                        <h3>Supplier {supplier.supplier}</h3>
-                        <p>Orders: {supplier.orders}</p>
+        <div className="dropdown-container">
+            <select 
+                value={selectedSupplier} 
+                onChange={e => setSelectedSupplier(e.target.value)} 
+                style={{ margin: '10px' }}
+            >
+                <option value="" disabled>Select a Supplier</option>
+                {suppliersData.map((supplier, index) => (
+                    <option key={index} value={supplier.supplier}>{supplier.supplier}</option>
+                ))}
+            </select>
+        </div>
+        <div className="chart">
+            <h2>Supplier Orders</h2>
+            <BarChart width={800} height={400} data={suppliersData}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="supplier" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="orders" fill="#ef476f" name="Orders" />
+                <Bar dataKey="deliveryTime" fill="#8884d8" name="Avg. Delivery Time (Days)" />
+            </BarChart>
+        </div>
+        <div className="stat-box-container">
+            {suppliersData.filter(supplier => supplier.supplier === selectedSupplier)
+                .map((supplier, index) => (
+                    <div className="stat-box suppliers" key={index} style={{ backgroundColor: colorfulBeautifulColors[index % colorfulBeautifulColors.length] }}>
+                        <FontAwesomeIcon icon={faShoppingCart} className="stat-icon" />
+                        <div className="stat-content">
+                            <h3>Supplier {supplier.supplier}</h3>
+                            <p>Orders: {supplier.orders}</p>
+                        </div>
                     </div>
-                </div>
-        ))}
+            ))}
+        </div>
     </div>
-</div>
       </div>
     </div>
   );
