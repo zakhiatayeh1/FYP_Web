@@ -29,6 +29,7 @@ import Dashboard from './Dashboard';
 import CreatePartType from './createPartType.jsx';
 import CreateBikeType from './createBikeType.jsx';
 import Manufacture from './Manufacture';
+import Hardware from './Hardware';
 
 export default function Main() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -68,6 +69,7 @@ export default function Main() {
                   <Route path="/createPartType" element={<CreatePartType />} />
                   <Route path="/createBikeType" element={<CreateBikeType/>} />
                   <Route path="/manufacture" element={<Manufacture />} />
+                  <Route path="/hardware" element={<Hardware />} />
             </Routes>
         </div>
     </div>

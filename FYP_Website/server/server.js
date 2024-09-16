@@ -13,6 +13,7 @@ const productRouter = require('./routes/product_endpoints.js');
 const partRouter = require('./routes/part_endpoints.js');
 const taskRouter = require('./routes/task_endpoints.js');
 const warehouseRouter = require('./routes/warehouse_endpoints.js');
+const hardwareRouter = require('./routes/hardware_endpoints.js');
 
 //app.use(cors()) //just a standard
 
@@ -62,6 +63,8 @@ app.use(partRouter);
 app.use(taskRouter);
 
 app.use(warehouseRouter);
+
+app.use(hardwareRouter);
 
 app.get('/gettinglibrary', (req, res) => {
   db.query('SELECT * FROM publisher', (err, result) => {
