@@ -629,7 +629,6 @@ app.post('/login', (req, res) => {
     })
   })
   
-////////////////////////////////////Fadel//////////////////////////////////////////////
 
 
 app.get('/getbyProducts', (req, res) => {
@@ -1243,9 +1242,6 @@ app.post('/startManufacturing', async (req, res) => {
   }
 });
 
-
-
-//////////////////////////////////////////END FADEL/////////////////////////////////////////////////////////////
 
 app.post('/createOrder', (req, res) => {
   const { managerId, employeeId, dateOrdered, price, quantity, offering_id, userRole } = req.body;
