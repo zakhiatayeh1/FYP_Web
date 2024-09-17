@@ -18,6 +18,30 @@ function Products() {
         navigate('/main/createProduct'); // Navigate to the add product page
     };
 
+
+    const [top30PercentModels, setTop30PercentModels] = useState([]);
+    const [remainingModels, setRemainingModels] = useState([]);
+    const [middle30To60PercentModels, setMiddle30To60PercentModels] = useState([]);
+
+    const [models, setModels] = useState([]);
+
+    const recomputeABC = () => {
+        console.log("ggggggg")
+        axios.get('http://localhost:3001/recomputeABC')
+        .then((response) => {
+            // console.log("ABC data "+JSON.stringify(response.data[0]))
+            setModels((response.data[0]))
+            const modelsArray = Array.isArray(response.data) ? response.data : [response.data];
+            //console.log("models "+JSON.stringify(response.data))
+                // Sort models by production time in descending order
+ 
+
+        })
+        .catch((error) => {
+          console.error('Error getting ABC:', error);
+        });
+    };
+
     useEffect(() => {
         axios.get('http://localhost:3001/getProducts')
           .then((response) => {
@@ -72,6 +96,7 @@ function Products() {
                                 <a href="#" onClick={() => toggleDescription(product.model_id)}  className="toggle-description">Read More</a>
                             )}
                             <h3>Price: ${product.price}</h3>
+                            <div>Storage Category: {product.storage_category}</div>
                                 </div>
                             <div className="buttons-container">
                                 <button onClick={() => navigate(`/main/editProduct/${product.model_id}`, { state: { product } })}>Edit</button>
@@ -84,6 +109,11 @@ function Products() {
                     </div>
                 ))}
             </div>
+                <div className="buttons-container" >
+                    <button onClick={()=>recomputeABC()}>
+                        recompute ABC category assignment
+                    </button>
+                </div>
         </div>
     );
 }

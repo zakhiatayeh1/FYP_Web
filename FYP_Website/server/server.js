@@ -1272,6 +1272,47 @@ app.post('/createOrder', (req, res) => {
   });
 });
 
+app.get('/getABC', (req, res) => {
+  db.query('SELECT * FROM model;', (err, result) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(result) //to send the data that we got from our query
+    }
+  })
+})
+app.get('/recomputeABC', (req, res) => {
+  const query = `SET @total_count := (SELECT COUNT(*) FROM Model);
+
+UPDATE Model
+JOIN (
+    SELECT
+        model_id,
+        production_time,
+        @rownum := @rownum + 1 AS row_rank
+    FROM (
+        SELECT model_id, production_time
+        FROM Model
+        ORDER BY production_time
+    ) AS ordered_models,
+    (SELECT @rownum := 0) AS r
+) AS RankedModels
+ON Model.model_id = RankedModels.model_id
+SET Model.storage_category = CASE
+    WHEN row_rank <= @total_count * 0.30 THEN 'A'  
+    WHEN row_rank > @total_count * 0.30 AND row_rank <= @total_count * 0.60 THEN 'B'  
+    ELSE 'C'  
+END;
+`
+  db.query(query, (err, result) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(result) //to send the data that we got from our query
+    }
+  })
+})
+
 
 
 app.listen(3001, () => {
