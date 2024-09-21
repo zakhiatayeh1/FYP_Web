@@ -26,25 +26,31 @@ const wss = new WebSocket.Server({ server });
 
 wss.on('connection', ws => {
   console.log('Client connected');
-  
+
   ws.on('message', message => {
     console.log('Received data:', message);
-    // Process the received data (e.g., parse and display it)
+
     // Decode the received Buffer into a string
-    const data = message.toString();  // **Changed**
+    const data = message.toString();
 
     // Try to parse it as JSON if it's structured that way
     try {
-      const parsedData = JSON.parse(data);  // **Changed**
-      console.log('Received data:', parsedData);  // **Changed**
-      // Now you can process the data (temperature and humidity)
+      const parsedData = JSON.parse(data);
+      console.log('Parsed data:', parsedData);
+      // Optionally broadcast the data to all connected clients
+      wss.clients.forEach(client => {
+        if (client.readyState === WebSocket.OPEN) {
+          client.send(JSON.stringify(parsedData));
+        }
+      });
     } catch (error) {
-      console.log('Received non-JSON data:', data);  // **Changed**
+      console.log('Failed to parse JSON:', data);
     }
   });
 
   ws.send('Connection established');
 });
+
 
 console.log(`WebSocket server is running on ws://localhost:${port}`);
 
