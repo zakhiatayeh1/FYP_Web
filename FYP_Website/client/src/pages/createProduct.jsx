@@ -25,6 +25,7 @@ function CreateProduct() {
     useEffect(() => {
         axios.get('http://localhost:3001/bikeTypes')
             .then((response) => {
+                console.log('basclete', response.data);
                 setProductTypes(response.data);
                 console.log(response.data)
             })
@@ -44,6 +45,8 @@ function CreateProduct() {
 
     const handleProductTypeChange = (e) => {
         setSelectedProductType(e.target.value);
+        console.log((e.target.value))
+        console.log(('faw2a'))
         if (e.target.value) {
             setProductTypeError(''); // clear error if input is not empty
         } else {
@@ -143,7 +146,7 @@ function CreateProduct() {
         // Only submit the form if no fields are empty
         if (imageUrl && selectedProductType && name && modelNumber && description && price && production_time && percentage) {
             axios.post('http://localhost:3001/createProduct', {
-                bike_category_id: selectedProductType,
+                bike_type_id: selectedProductType,
                 name: name,
                 model_number: modelNumber,
                 description: description,
@@ -190,8 +193,8 @@ function CreateProduct() {
                         <select value={selectedProductType} onChange={handleProductTypeChange}>
                             <option value="">Select a product type</option>
                             {productTypes.map(productType => (
-                                <option key={productType.bike_category_id} value={productType.bike_category_id}>
-                                    {productType.category_name}
+                                <option key={productType.bike_type_id} value={productType.bike_type_id}>
+                                    {productType.bike_type}
                                 </option>
                             ))}
                         </select>
