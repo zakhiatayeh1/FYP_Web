@@ -85,8 +85,10 @@ function Products() {
                             <div className="product-image-container">
                             <img src={product.image_url} alt={product.name} className="product-image" />
                             </div>
-                            <p>Type: {product.category_name}</p>
+                            {/* <p>Type: {product.category_name}</p> */}
+                            <p>Type: {product.bike_type}</p>
                             <p>Model: {product.model_number}</p>
+                            <p>Production time: {product.production_time}</p>
                             {showDescription[product.model_id] ? (
                                 <>
                                     <p>{product.description}</p>
@@ -96,7 +98,10 @@ function Products() {
                                 <a href="#" onClick={() => toggleDescription(product.model_id)}  className="toggle-description">Read More</a>
                             )}
                             <h3>Price: ${product.price}</h3>
-                            <div>Storage Category: {product.storage_category}</div>
+                            <div>Storage Category:{product.bike_category_id == 1 ? 'A' :
+                                product.bike_category_id == 2 ? 'B' :
+                                product.bike_category_id == 3 ? 'C' :
+                                product.bike_category_id}</div>
                                 </div>
                             <div className="buttons-container">
                                 <button onClick={() => navigate(`/main/editProduct/${product.model_id}`, { state: { product } })}>Edit</button>

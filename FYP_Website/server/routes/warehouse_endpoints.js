@@ -26,7 +26,7 @@ warehouseRouter.get('/getPartWarehouses', (req, res) => {
 
 // Endpoint for fetching warehouses from the second table
 warehouseRouter.get('/getProductWarehouses', (req, res) => {
-    db.query('SELECT s.*, c.category_name FROM byproduct_storage s INNER JOIN bike_category c ON s.bike_category_id = c.bike_category_id', (err, result) => {
+    db.query('SELECT s.*, c.category_name FROM byproduct_storage s INNER JOIN bike_category c ON s.byproduct_storage_id = c.byproduct_storage_id', (err, result) => {
         if (err) {
             console.error('Error fetching product warehouses:', err);
             res.status(500).send('Error fetching product warehouses');

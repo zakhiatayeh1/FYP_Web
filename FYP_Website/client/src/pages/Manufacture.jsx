@@ -305,6 +305,7 @@ const handleCheckComponentsAndManufacture = async (model_id, quantity) => {
                         </SortableTableCell>
 
                         <TableCell>Manufacture Bike</TableCell>
+                        <TableCell>AI estimated quantity</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -322,8 +323,9 @@ const handleCheckComponentsAndManufacture = async (model_id, quantity) => {
                                 placeholder="Qty" 
                                 min="1"
                                 style={{ width: '80px' }}
-                            />
+                                />
                             </TableCell>
+                            <TableCell>WIP</TableCell>
                             <TableCell>
                             <Button 
                                 variant="contained" 

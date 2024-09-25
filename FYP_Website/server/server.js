@@ -1298,10 +1298,10 @@ JOIN (
     (SELECT @rownum := 0) AS r
 ) AS RankedModels
 ON Model.model_id = RankedModels.model_id
-SET Model.storage_category = CASE
-    WHEN row_rank <= @total_count * 0.30 THEN 'A'  
-    WHEN row_rank > @total_count * 0.30 AND row_rank <= @total_count * 0.60 THEN 'B'  
-    ELSE 'C'  
+SET Model.bike_category_id = CASE
+    WHEN row_rank <= @total_count * 0.30 THEN '1'  
+    WHEN row_rank > @total_count * 0.30 AND row_rank <= @total_count * 0.60 THEN '2'  
+    ELSE '3'  
 END;
 
 SELECT MIN(production_time) AS min_production_time FROM model;
@@ -1313,11 +1313,22 @@ JOIN (
 ON 1=1
 SET storage_coefficient = production_time / POW(derived.min_production_time, 2)
     * CASE
-        WHEN storage_category = 'A' THEN POW(production_time, 2)*0.2
-        WHEN storage_category = 'B' THEN production_time *0.5
-        WHEN storage_category = 'C' THEN SQRT(production_time)*1
+        WHEN bike_category_id = '1' THEN POW(production_time, 2)*0.2
+        WHEN bike_category_id = '2' THEN production_time *0.5
+        WHEN bike_category_id = '3' THEN SQRT(production_time)*1
         ELSE 1
       END;
+
+
+  UPDATE model AS m
+JOIN (
+    SELECT bike_category_id, 
+           SUM(storage_coefficient) AS total_coefficient
+    FROM model
+    GROUP BY bike_category_id
+) AS subquery
+ON m.bike_category_id = subquery.bike_category_id
+SET m.percentage = (m.storage_coefficient * 100 / subquery.total_coefficient);
 
 `
   db.query(query, (err, result) => {

@@ -14,9 +14,11 @@ const db = mysql.createConnection({
 // Create a new product
 productRouter.post('/createProduct', (req, res) => {
     // Extract data from the request body
-    const { name, bike_category_id, model_number, description, price, image_url, production_time, percentage } = req.body;
+    const { name, bike_type_id, model_number, description, price, image_url, production_time, percentage } = req.body;
+    console.log('bike type id:'+JSON.stringify(req.body));
+    // const bike_category_id = 'X';
     // Insert the new product into the database
-    db.query('INSERT INTO model(name, bike_category_id, description, model_number, price, image_url, production_time, percentage) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', [name, bike_category_id, description, model_number, price, image_url, production_time, percentage], (err, result) => {
+    db.query('INSERT INTO model(name, bike_type_id, description, model_number, price, image_url, production_time, percentage) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', [name, bike_type_id, description, model_number, price, image_url, production_time, percentage], (err, result) => {
         if (err) {
             console.error('Error adding product to database:', err);
             res.status(500).send('Error adding product');
@@ -29,7 +31,8 @@ productRouter.post('/createProduct', (req, res) => {
 
 
 productRouter.get('/getProducts', (req, res) => {
-    const query = 'SELECT * FROM model LEFT JOIN bike_category ON model.bike_category_id = bike_category.bike_category_id';
+    // const query = 'SELECT * FROM model LEFT JOIN bike_category ON model.bike_category_id = bike_category.bike_category_id';
+    const query = 'SELECT * FROM (select * from bike_type natural join model ) as JJ NATURAL JOIN bike_category as bc';
     db.query(query, (err, result) => {
         if (err) {
             console.error('Error fetching products:', err);
@@ -37,6 +40,7 @@ productRouter.get('/getProducts', (req, res) => {
             return;
         }
         res.status(200).json(result);
+        //console.log(result)
     });
 });
 
@@ -75,7 +79,7 @@ productRouter.delete('/deleteProduct/:id', (req, res) => {
 });
 
 productRouter.get('/bikeTypes', (req, res) => {
-    const query = 'SELECT * FROM bike_category';
+    const query = 'SELECT * FROM bike_type';
     db.query(query, (err, result) => {
         if (err) {
             console.error('Error fetching bike types:', err);
