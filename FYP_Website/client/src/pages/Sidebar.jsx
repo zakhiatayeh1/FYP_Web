@@ -57,6 +57,9 @@ function Sidebar({sidebarOpen, setSidebarOpen}){
                     <li className="nav-item">
                         <Link className="nav-link" to="Hardware"><FontAwesomeIcon icon={faDashboard} /> System control</Link>
                     </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="Trial_page"><FontAwesomeIcon icon={faDashboard} /> Trial page</Link>
+                    </li>
                 </ul>
             </nav>
         </div>
