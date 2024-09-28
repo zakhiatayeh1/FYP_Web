@@ -1,10 +1,4 @@
-main_container{
-    --main-bg-color: #f5f5f5;
-    --main-sidebar-color: rgb(3,152,252);
-    --main-sidebar-color-hover: rgb(3,152,252, 0.1);
-    --main-sidebar-color-active: rgb(3,152,252, 0.2);
-    --main-sidebar-color-text: white;
-}
+
 
 html {
     width: 100%;
@@ -13,8 +7,8 @@ html {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 1rem;
     font-weight: 400;
-    --top-bar: rgb(3,152,252);
-    --side-bar: rgb(3,152,252);
+    --top-bar: #252936 !important;
+    --side-bar: #252936;
 }
 
 body{                                                    
@@ -39,31 +33,6 @@ body{
     overflow: auto;
 }
 
-.sidebar {
-    position: relative;
-    height: 100%;
-    background-color: var(--side-bar);
-    box-shadow: -5px 4px 5px 0 rgba(0,0,0,0.5);
-    margin:0;
-    padding-right:0px;
-    width:150px;
-    transition: width 0.5s ease-out;
-}
-
-.sidebar nav{
-    opacity:1; 
-    visibility: visible;
-    transition: opacity 0.5s, visibility 0s 0.5s; /* Animate changes to the opacity and visibility */
-}
-
-.sidebar.closed {
-   width: 10px;
-}
-
-.sidebar.closed nav{
-    opacity:0;
-    visibility: hidden;
-}
 
 
 .profilebutton:hover {
@@ -80,34 +49,19 @@ body{
     transform: scale(1.05); /* Slightly larger on hover */
 
 }
-.sidebar-toggle {
-    position: absolute;
-    top: 5px;
-    right:-10px;
-    border-radius: 50%;
-    height: 20px;
-    width: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: lightgrey;
-    cursor: pointer;
-}
 
 
 .top-bar {
-    margin:0;
-    padding:0;
+    margin:0 !important;
+    padding:0 ;
     background-color:var(--top-bar);
     display: flex;
     justify-content: space-between;
-    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.5);
 }
 
 .top-bar-logo img{
     height: auto;
     width: 5.5rem;
-    margin: 2px 1rem;
 }
 
 .top-bar-logo img:hover{
@@ -154,7 +108,7 @@ body{
     border-left: 0;
     cursor: pointer; 
     border-radius: 0;
-    border-color: lightblue;
+    border-color: none;
     margin:5px 0;
     
     /* Change the cursor to a pointer when hovering over the button */
@@ -303,7 +257,7 @@ body{
 }
 
 .profilebutton{
-    background-color: darkgrey; /* Green */
+    background-color: darkgrey; 
     border: none;
     color: #f0f0f0; /* Lighter color */
     padding: 10px 10px;
@@ -318,7 +272,7 @@ body{
 
 }
 .profilebutton2{
-    background-color: darkgrey; /* Green */
+    background-color: #3d4255; 
     border: none;
     color: #f0f0f0; /* Lighter color */
     padding: 10px 10px;

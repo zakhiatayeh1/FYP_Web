@@ -19,16 +19,16 @@ const Trial_page = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       {/* App Bar */}
-      <AppBar position="static" sx={{ backgroundColor: '#1976d2' }}>
+      <AppBar position="static" sx={{ backgroundColor: '#151a25' }}>
         <Toolbar>
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
             Supply Chain Management
           </Typography>
-          <IconButton color="inherit">
+          {/* <IconButton color="inherit">
             <Badge badgeContent={4} color="error">
               <Notifications />
             </Badge>
-          </IconButton>
+          </IconButton> */}
           <IconButton color="inherit">
             <AccountCircle />
           </IconButton>

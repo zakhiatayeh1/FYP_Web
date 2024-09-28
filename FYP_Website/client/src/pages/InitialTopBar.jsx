@@ -22,23 +22,23 @@ function InitialTopBar() {
 return (
         <div className="initial-top-top-bar">
             <div className="initial-top-User">
-                <Link className='initial-top-nav__listitem' to='/'>
-                    <button>
+                <Link  to='/'>
+                    <button className='profilebutton2'>
                     <FontAwesomeIcon icon={faHome} /> Home
                     </button>
                 </Link>
-                <Link className='initial-top-nav__listitem'  to='/about'>
-                    <button>
+                <Link  to='/about'>
+                    <button className='profilebutton2' >
                         <FontAwesomeIcon icon={faInfoCircle} /> About Us
                     </button>
                 </Link>
-                <Link className='initial-top-nav__listitem'  to='/login'>
-                    <button>
+                <Link to='/login'>
+                    <button className='profilebutton2' >
                         <FontAwesomeIcon icon={faSignInAlt} /> Login
                     </button>
                 </Link>
-                <Link className='initial-top-nav__listitem'  to='/register'>
-                    <button>
+                <Link  to='/register'>
+                    <button className='profilebutton2' >
                         <FontAwesomeIcon icon={faUserPlus} /> Register
                     </button>
                 </Link>

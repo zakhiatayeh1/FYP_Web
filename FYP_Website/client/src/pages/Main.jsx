@@ -32,16 +32,22 @@ import Manufacture from './Manufacture';
 import Hardware from './Hardware';
 import Trial_page from './Trial_page';
 
+import { Box, Grid, Paper, Typography, AppBar, Toolbar, IconButton, Badge } from '@mui/material';
+
+
 export default function Main() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   // var isAdmin = sessionStorage.getItem('isadmin');
   // console.log("AAAAAAAAAAAAAAAAAAAAAA" + isAdmin)
 
   return (
+    <Box sx={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
+
     <div className="dashboard-container" >
     <TopBar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen}/>
    <div className="dashboard-main-container">
    <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen}/>
+    
    <div className={`body-container ${sidebarOpen ? 'sidebar-open' : ''}`}>
         <div className="scrollable-content">
             <Routes>  
@@ -77,5 +83,6 @@ export default function Main() {
     </div>
    </div>
 </div>
+</Box>
   )
 }

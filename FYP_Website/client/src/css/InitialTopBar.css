@@ -13,7 +13,7 @@
   }
   
   .initial-top-nav__listitem button {
-    background-color: darkgrey; /* Green */
+    background-color: rgb(133, 115, 115); /* Green */
     border: none;
     color: #f0f0f0; /* Lighter color */
     cursor: pointer;
