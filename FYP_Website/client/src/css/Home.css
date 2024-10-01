@@ -101,7 +101,7 @@
   }                               
   
 .home-container {
-  background-color: whitesmoke; /* Adjust the grey shade here */
+  background-image:" whitesmoke"; /* Adjust the grey shade here */
   margin: 40px 20px; /* Add more padding for spacing */
 }
 
@@ -175,7 +175,7 @@
 .hero {
     position: relative;
     height: 550px;
-    background-image: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../pictures/Home_image.jpeg'); /* Replace with your background image */
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1717386255773-1e3037c81788?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8bWFudWZhY3R1cmluZ3xlbnwwfHwwfHx8MA%3D%3D'); /* Replace with your background image */
     background-size: cover;
     background-position: center;
     display: flex;
@@ -183,6 +183,7 @@
     justify-content: center;
     color: #fff; /* Text color */
     text-align: center;
+;
   }
   
   .hero-content {

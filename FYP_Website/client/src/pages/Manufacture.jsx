@@ -137,11 +137,11 @@ const handleCheckComponentsAndManufacture = async (model_id, quantity) => {
             const { data } = await axios.get(`http://localhost:3001/availableStorage`, { params: {model_id: model_id } });
             const availableSpace = parseInt(data.availableSpace, 10);
             if (availableSpace >= quantity) {
-                console.log("There is enough warehouse space to manufacture the requested quantity, proceeding with Manufacturing")
+                console.log("There is enough warehouse space to manufacture the requested quantity, proceeding with Manufacturing"+availableSpace)
                 await handleManufacture(model_id, quantity);
             }
             else{
-            alert("Not enough space to manufacture the requested quantity, create a new warehouse");
+            alert("Not enough space to manufacture the requested quantity, create a new warehouse"+availableSpace);
             navigate('/main/createUnit');
         }
 
@@ -301,10 +301,10 @@ const handleCheckComponentsAndManufacture = async (model_id, quantity) => {
                         </SortableTableCell>
                         
                         <SortableTableCell onClick={() => { setSortField('category'); setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc'); }}>
-                            Quanity To Manufacture {sortField === 'Manufacture_QTY' && (sortDirection === 'asc' ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />)}
+                            Model category {sortField === 'Manufacture_QTY' && (sortDirection === 'asc' ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />)}
                         </SortableTableCell>
 
-                        <TableCell>Manufacture Bike</TableCell>
+                        <TableCell>Quantity to manufacture</TableCell>
                         <TableCell>AI estimated quantity</TableCell>
                     </TableRow>
                 </TableHead>
@@ -314,7 +314,7 @@ const handleCheckComponentsAndManufacture = async (model_id, quantity) => {
                             <TableCell>{model.model_id}</TableCell>
                             <TableCell>{model.name}</TableCell>
                             <TableCell style={{ color: model.quantity < 20 ? 'red' : 'inherit' }}>{model.quantity}</TableCell>
-                            <TableCell>{model.category_name}</TableCell>
+                            <TableCell>{model.bike_type}</TableCell>
                             <TableCell>
                             <input 
                                 type="number" 

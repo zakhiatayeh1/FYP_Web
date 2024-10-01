@@ -870,9 +870,30 @@ app.get('/highest_stock_unit_ID', (req, res) => {
 //////////////////////////////////////////////////manufacture////////////////////////////////////////////////
 
 app.get('/getAllModels', (req, res) => {
-  const query = `
-  SELECT m.model_id, m.name, m.quantity, bc.category_name
-  FROM model m INNER JOIN bike_category bc ON m.bike_category_id = bc.bike_category_id;
+  const query = 
+  // SELECT m.model_id, m.name, m.quantity, bc.category_name
+  // FROM model m INNER JOIN bike_category bc ON m.bike_category_id = bc.bike_category_id;
+  `
+SELECT 
+    q.model_id, 
+    q.name, 
+    COALESCE(q.quantity, 0) AS quantity,
+    bt.bike_type 
+FROM 
+    (SELECT  
+        m.model_id, 
+        m.name, 
+        m.bike_type_id, 
+        COUNT(pb.byproduct_id) AS quantity
+    FROM 
+        model AS m
+    LEFT JOIN 
+        produced_byproduct AS pb ON m.model_id = pb.model_id
+    GROUP BY 
+        m.model_id, m.name, m.bike_type_id) AS q 
+JOIN 
+    bike_type AS bt ON bt.bike_type_id = q.bike_type_id
+
 `;
   db.query(query, (err, result) => {
       if (err) {
@@ -889,28 +910,96 @@ app.get('/getAllModels', (req, res) => {
   });
 });
 
-//update tables:
+// //update tables:
+// app.get('/availableStorage', (req, res) => {
+//   const model_id = req.query.model_id;
+//   const query = 
+//   // SELECT SUM(byproduct_storage_capacity - byproduct_storage_current_stock) AS available_space
+//   // FROM byproduct_storage
+//   // WHERE bike_category_id = (
+//     //     SELECT bike_category_id
+//     //     FROM model
+//     //     WHERE model_id = ?
+//     // );
+//     `
+    
+// select xx.byproduct_storage_capacity*xx.percentage-px.total_rows_per_model as remaining_capacity_for_model FROM
+// (SELECT model_id, bike_category_id, byproduct_storage_capacity, bike_type_id, byproduct_storage_current_stock,percentage 
+// FROM model AS mo 
+// JOIN byproduct_storage AS bs 
+// ON mo.bike_category_id = bs.byproduct_storage_id) AS XX
+// JOIN 
+// (SELECT pb.model_id, COUNT(*) AS total_rows_per_model from (SELECT byproduct_id, model_id, byproduct_storage_id 
+// FROM produced_byproduct 
+// WHERE sold = 0 AND isproduced = 1) AS pb group by pb.model_id) as px
+// on xx.model_id = px.model_id where xx.model_id = ?
+//   `;
+
+//   db.query(query, [model_id], (err, results) => {
+//       if (err) {
+//           console.error("Error retrieving available storage space", err);
+//           return res.status(500).send('Error retrieving available storage space');
+//       }
+//       if(results.length === 0){
+//         res.send({ availableSpace: 0 });
+//       }
+//       else{
+//       res.send({ availableSpace: results[0].remaining_capacity_for_model || 0 });
+//       }
+//   });
+// });
 app.get('/availableStorage', (req, res) => {
   const model_id = req.query.model_id;
   const query = `
-  SELECT SUM(byproduct_storage_capacity - byproduct_storage_current_stock) AS available_space
-  FROM byproduct_storage
-  WHERE bike_category_id = (
-      SELECT bike_category_id
-      FROM model
-      WHERE model_id = ?
-  );
+    SELECT FLOOR(xx.byproduct_storage_capacity*xx.percentage-px.total_rows_per_model) AS remaining_capacity_for_model 
+    FROM
+    (SELECT model_id, bike_category_id, byproduct_storage_capacity, bike_type_id, byproduct_storage_current_stock, percentage 
+    FROM model AS mo 
+    JOIN byproduct_storage AS bs 
+    ON mo.bike_category_id = bs.byproduct_storage_id) AS XX
+    LEFT JOIN 
+    (SELECT pb.model_id, COUNT(*) AS total_rows_per_model 
+     FROM (SELECT byproduct_id, model_id, byproduct_storage_id 
+           FROM produced_byproduct 
+           WHERE sold = 0 AND isproduced = 1) AS pb 
+     GROUP BY pb.model_id) AS px
+    ON xx.model_id = px.model_id 
+    WHERE xx.model_id = ?
   `;
 
   db.query(query, [model_id], (err, results) => {
-      if (err) {
-          console.error("Error retrieving available storage space", err);
-          return res.status(500).send('Error retrieving available storage space');
-      }
-      res.send({ availableSpace: results[0].available_space || 0 });
+    if (err) {
+      console.error("Error retrieving available storage space", err);
+      return res.status(500).send('Error retrieving available storage space');
+    }
+    if (results[0].remaining_capacity_for_model === null) {
+      console.log('fries1111'+results[0].remaining_capacity_for_model)
+      // No results found, run the alternative query
+      const alternativeQuery = `
+        SELECT FLOOR(bs.byproduct_storage_capacity * m.percentage / 100) AS remaining_capacity_for_model
+        FROM model AS m 
+        JOIN byproduct_storage AS bs ON bs.byproduct_storage_id = m.bike_category_id 
+        WHERE m.model_id = ?
+      `;
+      
+      db.query(alternativeQuery, [model_id], (altErr, altResults) => {
+        if (altErr) {
+          console.error("Error retrieving alternative storage space", altErr);
+          return res.status(500).send('Error retrieving alternative storage space');
+        }
+        
+        if (altResults.length === 0) {
+          return res.send({ availableSpace: 0 });
+        }
+        console.log('fries')
+        res.send({ availableSpace: altResults[0].remaining_capacity_for_model || 0 });
+      });
+    } else {
+      console.log('fries2'+results[0].remaining_capacity_for_model)
+      res.send({ availableSpace: results[0].remaining_capacity_for_model || 0 });
+    }
   });
 });
-
 
 app.post('/updateModel', (req, res) => {
   const { modelID, quantity } = req.body;
@@ -933,19 +1022,23 @@ app.post('/updateModel', (req, res) => {
 
     app.get('/highest_capacity_unit_ID', (req, res) => {
       const modelID = req.query.modelID; 
-      const query = `
-      SELECT 
-      bs.byproduct_storage_id,
-      (bs.byproduct_storage_capacity - bs.byproduct_storage_current_stock) AS available_space
-  FROM 
-      byproduct_storage bs
-  JOIN 
-      (SELECT bike_category_id FROM model WHERE model_id = ?) AS m
-  ON 
-      bs.bike_category_id = m.bike_category_id
-  ORDER BY 
-      available_space DESC
-  LIMIT 1;
+      const query = 
+      //     SELECT 
+      //     bs.byproduct_storage_id,
+      //     (bs.byproduct_storage_capacity - bs.byproduct_storage_current_stock) AS available_space
+      // FROM 
+      //     byproduct_storage bs
+      // JOIN 
+      //     (SELECT bike_category_id FROM model WHERE model_id = ?) AS m
+      // ON 
+      //     bs.bike_category_id = m.bike_category_id
+      // ORDER BY 
+      //     available_space DESC
+      // LIMIT 1;
+      `
+      select bs.byproduct_storage_id, floor(bs.byproduct_storage_capacity*m.percentage/100) as available_space
+from
+model as m join byproduct_storage as bs on bs.byproduct_storage_id = m.bike_category_id where m.model_id=2
     `;
     
       db.query(query, [modelID], (err, result) => {

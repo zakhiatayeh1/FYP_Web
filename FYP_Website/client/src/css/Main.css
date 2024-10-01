@@ -132,10 +132,15 @@ body{
     text-align: center;
 }
 .nav-item{
+   display: flex; 
+   align-items: center; 
+   white-space: nowrap;
    padding:6px;
    border: solid;
    border-width: 2px 0;
+   align-items: left;
    border-color: transparent;
+   font-size: 15=px;
    overflow-wrap: normal;
    
 }
