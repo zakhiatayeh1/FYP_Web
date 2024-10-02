@@ -49,6 +49,7 @@ const Parts = () => {
                             description={part.description}
                             name={part.name}
                             modelNumber={part.model_number}
+                            quantity2={part.quantity}
                             editable={true}
                         />
                     ))

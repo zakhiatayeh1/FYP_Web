@@ -382,7 +382,7 @@ const e = require('express')
         console.error(err.message);
         return res.status(500).send('Server error');
       }
-  
+      console(json.stringify(results))
       res.json(results);
     }
     );

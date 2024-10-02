@@ -282,7 +282,7 @@ const handleCheckComponentsAndManufacture = async (model_id, quantity) => {
             };
           
     return (
-        <div>
+        <div className="manufacture-div">
             <Title variant="h4">Models</Title> 
             <ToastContainer position="top-center" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover /> 
             <TableContainer  style={{ width: '97%', marginRight: '20px' }} component={Paper}>

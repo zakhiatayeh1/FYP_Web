@@ -135,3 +135,89 @@
   font-size: 16px;
   color: #333;
 }*/
+
+
+
+/* New styles for full-screen layout */
+.manufacture-page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.manufacture-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.MuiTableContainer-root {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 97%;
+  margin-right: 20px;
+}
+
+.MuiTable-root {
+  flex: 1;
+}
+
+/* ... any other existing styles ... */
+
+/* Updated styles for full-screen layout */
+.manufacture-div {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.manufacture-div > .MuiTypography-root {
+  margin-bottom: 20px;
+}
+
+.manufacture-div > .MuiTableContainer-root {
+  height: calc(100vh - 200px); /* Adjust this value as needed */
+  overflow-y: auto;
+  width: 100%;
+  margin-right: 0;
+}
+
+.manufacture-div .MuiTable-root {
+  width: 100%;
+}
+
+.manufacture-div .MuiTableContainer-root > .MuiTextField-root {
+  margin-bottom: 20px;
+}
+
+/* Fixed size for table rows */
+.manufacture-div .MuiTableRow-root {
+  height: 10px !important; /* Adjust this value to your preferred row height */
+}
+
+/* Ensure table header stays at the top */
+.manufacture-div .MuiTableHead-root {
+  position: sticky;
+  top: 0;
+  background-color: #fff; /* or any color that matches your design */
+  z-index: 1;
+}
+
+/* Style for table cells to ensure content fits */
+.manufacture-div .MuiTableCell-root {
+  padding: 8px 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Optional: Add some padding to the bottom of the table for better scrolling experience */
+.manufacture-div .MuiTableBody-root {
+  padding-bottom: 20px;
+}
+
+/* ... any other existing styles ... */

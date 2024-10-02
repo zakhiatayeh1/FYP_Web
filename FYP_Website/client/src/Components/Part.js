@@ -5,7 +5,9 @@ import {useNavigate} from 'react-router-dom';
 import {useLocation} from 'react-router-dom';
 
 
-function Part({id, uniqueId, name, type, description, image, modelNumber, editable, category_id}) {
+function Part({id, uniqueId, name, type, description, image, modelNumber, editable, quantity2, category_id,}) {
+    // console.log('xyz'+name)
+    // console.log('qqqq'+quantity)
     const [showDescription, setShowDescription] = React.useState(false);
     const [{basket}, dispatch] = useStateValue();
     const navigate = useNavigate();
@@ -41,7 +43,7 @@ function Part({id, uniqueId, name, type, description, image, modelNumber, editab
                 <p>Type: {type}</p>
                 <img className='part-image' src={image} alt={type} />
                 <p>Model: {modelNumber}</p>
-                {showDescription ? (
+                <p>Quantity: {quantity2 !== undefined ? quantity2 : 6}</p>                {showDescription ? (
                     <>
                         <p className='part-description'>Description: {description}</p>
                         <p className='toggle-description' onClick={toggleDescription}>Read Less</p>
