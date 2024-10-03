@@ -332,7 +332,7 @@ Promise.all(componentPromises)
 
           res.status(200).json({ message: 'Order status updated successfully' });
         });
-
+          console.log('jude'+quantity)
         // Update the quantity in the component_type table
         db.query('UPDATE component_type SET quantity = quantity + ? WHERE component_type_id = ?', [quantity, component_type_id], error => {
           if (error) {

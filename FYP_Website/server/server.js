@@ -428,16 +428,16 @@ const e = require('express')
   });
 
 // Fetch all parts
-app.get('/parts', (req, res) => {
-  db.query('SELECT * FROM parts', (err, results) => {
-    if (err) {
-      console.error(err.message);
-      return res.status(500).send('Server error');
-    }
+// app.get('/parts', (req, res) => {
+//   db.query('SELECT * FROM parts', (err, results) => {
+//     if (err) {
+//       console.error(err.message);
+//       return res.status(500).send('Server error');
+//     }
 
-    res.json(results);
-  });
-});
+//     res.json(results);
+//   });
+// });
 
 app.post('/blueprint', (req, res) => {
   const { modelId, parts } = req.body;
