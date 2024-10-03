@@ -136,6 +136,7 @@ app.get('/getAllOrders', (req, res) => {
       res.status(500).json({ error: 'Internal server error' });
       return;
     }
+    console.log("orderss"+JSON.stringify(result))
     res.send(result);
   });
 });

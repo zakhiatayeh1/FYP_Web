@@ -329,7 +329,7 @@ Promise.all(componentPromises)
             console.error('Error updating order status:', error);
             return res.status(500).json({ error: 'Internal server error' });
           }
-
+          
           res.status(200).json({ message: 'Order status updated successfully' });
         });
           console.log('jude'+quantity)
