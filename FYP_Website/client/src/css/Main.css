@@ -312,7 +312,7 @@ body{
 }
 .body-container{
     flex:1;
-    margin-left: 15px;   /*Add a margin to the left of the body container to prevent the content from touching the sidebar*/
+    /* margin-left: 15px;   Add a margin to the left of the body container to prevent the content from touching the sidebar */
 }
 
 .User{
@@ -332,3 +332,5 @@ background-color: white;
     transition-timing-function: linear;
 }
 
+/* body{    background-color: #1c1f27;
+} */

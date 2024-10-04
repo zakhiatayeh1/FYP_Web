@@ -14,6 +14,7 @@ const partRouter = require('./routes/part_endpoints.js');
 const taskRouter = require('./routes/task_endpoints.js');
 const warehouseRouter = require('./routes/warehouse_endpoints.js');
 const hardwareRouter = require('./routes/hardware_endpoints.js');
+const dashboardRouter = require('./routes/dashboard_endpoints.js');
 
 //app.use(cors()) //just a standard
 
@@ -36,7 +37,6 @@ app.use(
   })
 )
 
-///////////3/31
 app.options('*', cors());
 
 
@@ -65,6 +65,8 @@ app.use(taskRouter);
 app.use(warehouseRouter);
 
 app.use(hardwareRouter);
+
+app.use(dashboardRouter);
 
 app.get('/gettinglibrary', (req, res) => {
   db.query('SELECT * FROM publisher', (err, result) => {
