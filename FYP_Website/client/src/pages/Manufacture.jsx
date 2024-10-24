@@ -23,6 +23,7 @@ const Title = styled(Typography)({
 function Manufacture() {
     const navigate = useNavigate();
     const [models, setModels] = useState([]);
+    const [AIEstimation, setAIEstimation] = useState([])
     const [search, setSearch] = useState('');
     const [sortField, setSortField] = useState(null);
     const [sortDirection, setSortDirection] = useState('asc');
@@ -31,10 +32,38 @@ function Manufacture() {
 
     const [manufactureQuantities, setManufactureQuantities] = useState({});
 
+    const fetchAIEstimation = async () => {
+        try {
+          // Make a GET request to the server
+          const response = await axios.get(`http://localhost:3001/getAIEstimation`, {
+
+          });
+      
+          // Handle the response data
+          console.log('AI Estimation Data:', response.data);
+          setAIEstimation(response.data[0])
+          // You can also update your state or perform other actions with the data here
+        } catch (error) {
+          // Handle errors
+          console.error('Error fetching AI estimation:', error);
+        }
+      };
+
     useEffect(() => {
+        const updatedModels = models.map(model => ({
+          ...model,
+          AIquantity: AIEstimation[model.name] || 0,
+        }));
+        
+        setModels(updatedModels);
+      }, [AIEstimation]);
+
+    useEffect(() => {
+        fetchAIEstimation(); // Replace with the actual model ID you want to fetch
         axios.get('http://localhost:3001/getAllModels')
             .then(response => {
                 setModels(response.data);
+                console.log("olll")
                 console.log(response.data)
 
             })
@@ -325,7 +354,8 @@ const handleCheckComponentsAndManufacture = async (model_id, quantity) => {
                                 style={{ width: '80px' }}
                                 />
                             </TableCell>
-                            <TableCell>WIP</TableCell>
+                            {/* <TableCell>0</TableCell> */}
+                            <TableCell>{model.AIquantity}</TableCell>
                             <TableCell>
                             <Button 
                                 variant="contained" 

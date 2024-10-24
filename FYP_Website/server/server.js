@@ -1347,6 +1347,9 @@ app.use(hardwareRouter);
 
 app.use(dashboardRouter);
 
+const fs = require('fs');
+const csv = require('csv-parser');
+
 app.get('/gettinglibrary', (req, res) => {
   db.query('SELECT * FROM publisher', (err, result) => {
     if (err) {
@@ -2715,7 +2718,29 @@ SET m.percentage = (m.storage_coefficient * 100 / subquery.total_coefficient);
   })
 })
 
+app.get('/getAIEstimation', (req, res) => {
+  const model_id = req.query.model_id;
+  const results = [];
 
+  const csvFilePath = '../../AI_Model/datasets/sales_predictions.csv'; 
+
+  fs.createReadStream(csvFilePath)
+    .pipe(csv())
+    .on('data', (data) => {
+        results.push(data);
+        console.log("results: "+data)
+    })
+    .on('end', () => {
+      if (results.length === 0) {
+        return res.status(404).send('No data found for the specified model_id');
+      }
+      res.json(results); 
+    })
+    .on('error', (err) => {
+      console.error("Error reading CSV file:", err);
+      res.status(500).send('Error reading CSV file');
+    });
+});
 
 app.listen(3001, () => {
   console.log('your server is running on port 3001')
