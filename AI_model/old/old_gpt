@@ -1,0 +1,82 @@
+# Step 1: Import Libraries
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.metrics import mean_absolute_error
+from sklearn.preprocessing import LabelEncoder
+
+# Step 2: Load Data
+data = pd.read_csv('./sales_df.csv')
+
+# Step 3: Data Preprocessing
+data['date_ordered'] = pd.to_datetime(data['date_ordered'])
+data = data.sort_values(['product', 'date_ordered'])  # Sort by product and date
+
+# Step 4: Feature Engineering
+# Extract time-based features
+data['year'] = data['date_ordered'].dt.year
+data['month'] = data['date_ordered'].dt.month
+data['day'] = data['date_ordered'].dt.day
+data['day_of_week'] = data['date_ordered'].dt.dayofweek
+
+# Lag features for each product's previous quantity
+data['quantity_lag1'] = data.groupby('product')['quantity'].shift(1)
+data['rolling_avg_7'] = data.groupby('product')['quantity'].rolling(window=7).mean().reset_index(0, drop=True)
+
+# Drop rows with NaN values from lag/rolling features
+data = data.dropna()
+
+# Step 5: Encode Categorical Data (Product)
+le = LabelEncoder()
+data['product_encoded'] = le.fit_transform(data['product'])
+
+# Step 6: Train-Test Split
+X = data[['product_encoded', 'year', 'month', 'day', 'day_of_week', 'quantity_lag1', 'rolling_avg_7']]
+y = data['quantity']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, shuffle=False)
+
+# Step 7: Model Training (Random Forest)
+model = RandomForestRegressor(n_estimators=100, random_state=42)
+model.fit(X_train, y_train)
+
+# Step 8: Model Evaluation
+y_pred = model.predict(X_test)
+mae = mean_absolute_error(y_test, y_pred)
+print(f'Mean Absolute Error: {mae}')
+
+# Step 9: Future Prediction for all products (next 7 days example)
+future_dates = pd.date_range(start=data['date_ordered'].max(), periods=7, freq='D')
+future_data = pd.DataFrame({'date_ordered': future_dates})
+
+# Prepare features for each product
+all_future_preds = {}
+for product in data['product'].unique():
+    # Create a copy for each product's prediction
+    future_data_copy = future_data.copy()
+    
+    # Set the time-based features
+    future_data_copy['year'] = future_data_copy['date_ordered'].dt.year
+    future_data_copy['month'] = future_data_copy['date_ordered'].dt.month
+    future_data_copy['day'] = future_data_copy['date_ordered'].dt.day
+    future_data_copy['day_of_week'] = future_data_copy['date_ordered'].dt.dayofweek
+
+    # Set lag and rolling average for the product based on recent data
+    last_known_quantity = data[data['product'] == product]['quantity'].iloc[-1]
+    last_rolling_avg = data[data['product'] == product]['rolling_avg_7'].iloc[-1]
+    
+    future_data_copy['quantity_lag1'] = last_known_quantity
+    future_data_copy['rolling_avg_7'] = last_rolling_avg
+    
+    # Encode the product
+    future_data_copy['product_encoded'] = le.transform([product])[0]
+
+    # Predict the quantity for the next 7 days for this product
+    future_preds = model.predict(future_data_copy[['product_encoded', 'year', 'month', 'day', 'day_of_week', 'quantity_lag1', 'rolling_avg_7']])
+    
+    # Store the predictions for this product
+    all_future_preds[product] = future_preds
+
+# Print future predictions for each product
+for product, preds in all_future_preds.items():
+    print(f"Future Predictions for {product}: {preds}")
