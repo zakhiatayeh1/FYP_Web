@@ -85,6 +85,7 @@ function Employees() {
                 <button onClick={() => handleMakeManager(employee.employee_id, employee.email, employee.password,employee.name)}>
                   Make Manager
                 </button>
+               
               </td>
               {/* Render more columns if needed */}
             </tr>
