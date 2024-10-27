@@ -35,7 +35,7 @@
   display: inline-block;
   margin-top: 20px; /* Adjust margin as needed */
   padding: 10px 20px;
-  background-color: #007bff; /* Button background color */
+  background-color: #00408a; /* Button background color */
   color: #fff; /* Button text color */
   text-decoration: none;
   border-radius: 5px;
@@ -43,7 +43,7 @@
 }
 
 .dashboard-link:hover {
-  background-color: #0056b3; /* Change background color on hover */
+  background-color: #00408a; /* Change background color on hover */
 }
 
 .dashboard-link .button-icon {
@@ -52,7 +52,7 @@
 
   
   .link:hover {
-    color: #0056b3; /* Color when hovered */
+    color: #00408a; /* Color when hovered */
   }
   
   
@@ -204,7 +204,7 @@
   
   .cta-button {
     display: inline-block;
-    background-color: #007bff;
+    background-color: #00408a;
     color: #fff;
     padding: 12px 24px;
     border-radius: 5px;
@@ -213,7 +213,7 @@
   }
   
   .cta-button:hover {
-    background-color: #0056b3;
+    background-color: #00408a;
   }
   
   .button-icon {
