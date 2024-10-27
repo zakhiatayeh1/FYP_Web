@@ -1,224 +1,153 @@
-/* Container */
-#supplier-page .container {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  /* Main Container */
-  #supplier-page .main-container {
-    display: flex;
-    flex: 1;
-  }
-  
-  /* Content */
-  #supplier-page .content {
-    flex: 1;
-    padding: 20px;
-  }
-  
-  /* Header */
-  #supplier-page .header {
-    margin-bottom: 20px;
-  }
-  
-  #supplier-page .header h1 {
-    font-size: 24px;
-    color: #333333;
-  }
-  
-  /* Filters */
-  #supplier-page .filters {
-    margin-bottom: 20px;
-  }
-  
-  #supplier-page .filters select,
-  #supplier-page .filters button {
-    font-size: 14px;
-    padding: 8px 12px;
-    border: 1px solid #dddddd;
-    margin:2px;
-    border-radius: 5px;
-    background-color: #ffffff;
-    color: #333333;
-    margin-right: 10px;
-    cursor: pointer;
-  }
-  
-  /* Supplier Details */
-  #supplier-page .supplier-details {
-    border: 1px solid #dddddd;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 20px;
-  }
-  
-  #supplier-page .supplier-name {
-    margin-bottom: 10px;
-    font-size: 18px;
-    color: #333333;
-  }
-  
-  /* Offerings */
-  #supplier-page .offerings {
-    margin-left: 20px;
-  }
-  
-  #supplier-page .offering {
-    margin-bottom: 10px;
-  }
-  
-  #supplier-page .offering p {
-    margin: 5px 0;
-    font-size: 14px;
-    color: #666666;
-  }
-  
-
-/* Filters */
-#supplier-page  .filters select,
-#supplier-page  .filters button {
-  font-size: 14px;
-  padding: 8px 12px;
-  border: 1px solid #dddddd;
-  border-radius: 5px;
-  background-color: #ffffff;
-  color: #333333;
-  margin-right: 10px;
-  cursor: pointer;
-  white-space: nowrap; /* Prevent text wrapping */
-  overflow: hidden; /* Hide overflow text */
-  text-overflow: ellipsis; /* Show ellipsis for overflow text */
-  min-width: 250px; /* Adjust as needed */
+/* Main Container Styles */
+.container {
+  padding: 0; /* Remove padding to eliminate white space */
+  margin: 0; /* No margin to align to edges */
+  width: 100%;
+  background-color: #f9f9f9;
 }
 
-/* Supplier Details */
-#supplier-page .supplier-details {
-  border: 1px solid #dddddd;
-  border-radius: 5px;
-  padding: 10px;
+/* Header Styles */
+.header {
+  text-align: right; /* Align header to the right */
+  padding: 10px 20px;
+}
+
+.header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #2e3a46;
   margin-bottom: 20px;
-  overflow: auto; /* Add scrollbar if content overflows */
+  border-left: 4px solid #2e3a46;
+  padding-left: 12px;
+  display: inline-block; /* Ensures it stays inline for right alignment */
 }
 
-/* Offerings */
-#supplier-page .offerings {
-  margin-left: 20px;
-  max-width: 500px; /* Limit width of offerings container */
-  text-wrap: wrap;
+/* Filters and Sorting Section */
+.filters {
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-left: 20px; /* Align with content */
 }
 
-#supplier-page .offerings input{
-  width: 70%;
-  padding: 8px;
-  margin-top:4px;
+.filters select, .filters button {
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+/* General Button Styles */
+button {
+  background-color: #0056b3;
+  color: #ffffff;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+  margin: 5px;
+}
+
+button:hover {
+  background-color: #003f8a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 63, 138, 0.2);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* New Supplier Form Styles */
+.new-supplier {
+  margin-bottom: 20px;
+  padding: 15px 20px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #ffffff; /* White background */
+}
+
+.new-supplier input,
+.new-supplier select {
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  width: calc(50% - 22px);
   border: 1px solid #ccc;
   border-radius: 4px;
-  margin-right: 5px;
 }
 
-#supplier-page .offerings button{
-  padding: 8px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
+.new-supplier input:focus,
+.new-supplier select:focus {
+  border-color: #0056b3;
+  outline: none;
+}
+
+/* Supplier Details Section */
+.supplier-details {
+  background-color: #ffffff;
+  padding: 20px;
+  margin-bottom: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+.supplier-details h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+/* Offering Container Styles */
+.offering {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid #d1d1d1; /* Subtle border */
+  border-radius: 6px;
+  background-color: #ffffff; /* White background */
+}
+
+.offering p {
+  margin: 0 10px 8px 0;
+  flex: 1 0 100%;
+}
+
+.offering input[type="number"] {
+  width: 80px;
+  padding: 6px;
+  margin-right: 8px;
+  border: 1px solid #ccc;
   border-radius: 4px;
-  cursor: pointer;
-  margin-top: 4px;
 }
 
-#supplier-page .offerings button:hover {
-  background-color: #0056b3;
+.offering input[type="number"]:focus {
+  border-color: #0056b3;
 }
 
-#supplier-page .offering p {
-  margin: 5px 0;
-  font-size: 14px;
-  color: #666666;
-  white-space: nowrap; /* Prevent text wrapping */
-  overflow: hidden; /* Hide overflow text */
-  text-overflow: ellipsis; /* Show ellipsis for overflow text */
+.offering button {
+  margin-top: 5px;
 }
 
-#supplier-page .supplier-container {
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 20px;
-    width: 100%; /* Ensure the container spans the available width */
-  }
-  
-  #supplier-page  .offering {
-    margin-bottom: 10px;
-    padding: 10px;
-    background-color: #f9f9f9; /* Example background color */
-    border: 1px solid #ccc; /* Example border color */
-    border-radius: 5px;
-    width: 100%; /* Ensure the container spans the available width */
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .filters {
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 0;
   }
 
-  .supplier-container {
-    display: inline-block; /* Make the container span horizontally */
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .offering {
+  .new-supplier input,
+  .new-supplier select,
+  .filters select, 
+  .filters button,
+  .offering input[type="number"] {
+    width: 100%;
     margin-bottom: 10px;
-    padding: 10px;
-    background-color: #f9f9f9; /* Example background color */
-    border: 1px solid #ccc; /* Example border color */
-    border-radius: 5px;
   }
-  #supplier-page .new-supplier {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    margin-bottom: 20px;
-  }
-  
-  #supplier-page .section-header {
-    background-color: #007bff;
-    padding: 10px 20px;
-    margin: 0;
-    cursor: pointer;
-  }
-  
-  #supplier-page .form-container {
-    padding: 20px;
-  }
-  
-  #supplier-page input[type="text"]{
-    width: 70%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-
-  #supplier-page .select-type{
-    width: 70%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-right: 5px;
-  }
-  
-  
-  
-  #supplier-page .submit-btn {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
-    margin-bottom: 10px;
-    cursor: pointer;
-  }
-  
-  #supplier-page .submit-btn:hover {
-    background-color: #0056b3;
-  }
-  
+}

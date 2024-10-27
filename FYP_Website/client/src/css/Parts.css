@@ -1,18 +1,26 @@
+/* Parts Page Container */
 .parts-page {
     padding: 20px;
 }
 
+/* Header Styling for Parts Page */
 .parts-header {
     margin-bottom: 20px;
-    border-bottom: 1px solid #000; /* Add this line */
+    padding-left: 10px; /* Space after the border */
+    border-left: 4px solid #2e3a46; /* Dark blue left border */
+    font-size: 28px;
+    font-weight: 700;
+    color: #2e3a46;
 }
 
+/* Create Part Container */
 .create-part-container {
     display: flex;
     margin-bottom: 20px;
 }
 
-.part-search-container{
+/* Search Container for Parts */
+.part-search-container {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -23,28 +31,135 @@
 .part-search-container input {
     padding: 10px;
     border-radius: 5px;
-    border: 1px solid #dee2e6;
+    border: 1px solid #ccc; /* Light grey border */
     width: 70%;
     box-sizing: border-box;
+    margin-right: 10px; /* Space between input and button */
 }
 
+/* Parts Container Styling */
 .parts-container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
 }
 
-.create-part-button {
+/* General Button Styling for Consistent Theme */
+button {
     padding: 10px 20px;
     font-size: 1em;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    background-color: #007BFF;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Create Part Button Styling */
+.create-part-button {
+    background-color: #0056b3; /* Consistent primary blue color */
     color: white;
     text-decoration: none; /* Remove underline from link */
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 .create-part-button:hover {
-    background-color: #0056b3;
+    background-color: #003f8a; /* Darker blue on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 63, 138, 0.2);
+}
+
+.create-part-button:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* Edit Button Styling in Parts Page */
+.parts-page .edit-part-button {
+    background-color: #0056b3; /* Consistent primary blue color */
+    color: white;
+    margin-top: 10px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.parts-page .edit-part-button:hover {
+    background-color: #003f8a; /* Darker blue on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 63, 138, 0.2);
+}
+
+.parts-page .edit-part-button:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* Ensure Edit Button Styling in Part Component */
+.part button {
+    background-color: #0056b3; /* Consistent primary blue color */
+    color: white;
+    margin-top: 10px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.part button:hover {
+    background-color: #003f8a; /* Darker blue on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 63, 138, 0.2);
+}
+
+.part button:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* Part Card Styling */
+.part-card {
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #d1d1d1; /* Light grey border */
+    border-radius: 6px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Part Image Styling */
+.part-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+/* Part Info Styling */
+.part-card h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.part-card p {
+    text-align: center;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+}
+
+/* Part Description */
+.part-description {
+    text-align: justify;
+    word-wrap: break-word;
+}
+
+/* Toggle Description Link */
+.toggle-description {
+    color: #0056b3;
+    cursor: pointer;
+    text-decoration: underline;
+    margin-top: 10px;
+}
+
+.toggle-description:hover {
+    color: #003f8a;
 }

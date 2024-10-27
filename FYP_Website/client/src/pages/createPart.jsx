@@ -133,21 +133,7 @@ function CreatePart() {
             <div className='create-part-header'>
             <h1 style= {{textAlign:'center'}}>Create Part</h1>
             </div>
-            <div style={{ textAlign: "left" }}>
-                <button style={{
-                    backgroundColor: "#007BFF", /* Blue */
-                    border: "none",
-                    color: "white",
-                    padding: "10px 20px", /* Smaller */
-                    textAlign: "center",
-                    textDecoration: "none",
-                    display: "inline-block",
-                    fontSize: "14px", /* Smaller */
-                    margin: "10px 2px",
-                    cursor: "pointer",
-                    borderRadius: "4px"
-                }} onClick={() => navigate('/main/createPartType')}>Create Part Type</button>
-            </div>
+           
 
             <div className='create-part-form-container'>
                 <form className='create-part-form' onSubmit={handleSubmit}>

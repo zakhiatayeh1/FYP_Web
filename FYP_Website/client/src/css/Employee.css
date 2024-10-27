@@ -1,14 +1,14 @@
-/* Container for Manage Pending Employees Button */
+/* Manage Pending Employees Button */
 .createEmployees button {
-  background: linear-gradient(to right, #0056b3, #003f8a); /* Consistent blue gradient */
+  background-color: #0056b3; /* Flat blue color to match app's theme */
   color: #ffffff;
-  padding: 12px 24px; /* Increased padding for better clickability */
+  padding: 12px 24px; /* Consistent padding for better clickability */
   border: none;
-  border-radius: 6px; /* Matches the task page button */
+  border-radius: 6px; /* Smooth rounded corners */
   cursor: pointer;
-  font-size: 15px; /* Increased for better readability */
-  margin: 10px 0 0 20px; /* Consistent padding from sidebar */
-  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+  font-size: 15px; /* Improved readability */
+  margin: 10px 0 0 20px; /* Consistent margin from sidebar */
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -16,8 +16,27 @@
 }
 
 .createEmployees button:hover {
-  background: linear-gradient(to right, #003f8a, #002f6c); /* Darker gradient on hover */
-  transform: translateY(-2px); /* Lift on hover */
+  background-color: #00408a; /* Darker blue on hover */
+  transform: translateY(-2px); /* Lift effect on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+/* Make Manager Button */
+.employee-table button {
+  background-color: #0056b3; /* Flat blue color matching the app */
+  color: #ffffff;
+  padding: 10px 20px; /* Consistent padding */
+  border: none;
+  border-radius: 6px; /* Smooth rounded corners */
+  cursor: pointer;
+  font-size: 14px; /* Matches the app's button style */
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Consistent shadow */
+}
+
+.employee-table button:hover {
+  background-color: #00408a; /* Darker blue on hover */
+  transform: translateY(-2px); /* Lift effect on hover */
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
 }
 
@@ -26,7 +45,7 @@
   margin: 20px;
   padding: 20px;
   background-color: #ffffff; /* White background for consistency */
-  border-radius: 8px; /* Matches task page containers */
+  border-radius: 8px; /* Matches app containers */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Consistent shadow */
   border: 1px solid #ccc; /* Subtle border for separation */
 }
@@ -35,7 +54,7 @@
 .employee-table-container h2 {
   font-size: 26px;
   font-weight: 700;
-  color: #2e3a46; /* Matches task page headers */
+  color: #2e3a46; /* Matches app headers */
   margin-bottom: 15px;
   border-left: 4px solid #2e3a46; /* Consistent left border */
   padding-left: 8px; /* Padding after border */
@@ -51,7 +70,7 @@
 
 /* Header Row Styling */
 .employee-table th {
-  background-color: #2e3a46; /* Matches task page table header color */
+  background-color: #2e3a46; /* Consistent header color */
   color: #ffffff;
   padding: 14px; /* Consistent padding */
   text-align: left;
@@ -73,26 +92,7 @@
   cursor: pointer;
 }
 
-/* Specific Button Styling for "Make Manager" Button */
-.employee-table button {
-  background: linear-gradient(to right, #0056b3, #003f8a); /* Consistent blue gradient */
-  color: #ffffff;
-  border: none;
-  padding: 10px 20px; /* Consistent padding */
-  cursor: pointer;
-  border-radius: 6px; /* Consistent border radius */
-  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
-  font-size: 14px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Consistent shadow */
-}
-
-.employee-table button:hover {
-  background: linear-gradient(to right, #003f8a, #002f6c); /* Darker blue on hover */
-  transform: translateY(-2px); /* Lift on hover */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
-}
-
-/* Make Table Responsive for Smaller Screens */
+/* Responsive Adjustments */
 @media (max-width: 768px) {
   .employee-table-container {
       margin: 10px;
@@ -110,7 +110,7 @@
   .createEmployees button,
   .employee-table button {
       font-size: 13px;
-      padding: 8px 16px;
+      padding: 8px 16px; /* Adjusted padding for smaller screens */
   }
 
   /* Adjust title font size for smaller screens */

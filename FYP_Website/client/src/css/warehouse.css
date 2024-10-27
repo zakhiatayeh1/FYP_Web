@@ -1,67 +1,99 @@
 /* Container for the whole page */
 .warehouses-page {
-   padding: 20px;
-}
-
-/* Header styling */
+    padding: 20px;
+ }
+ 
+ /* Header styling */
+ /* Header styling for Warehouse Page */
 .warehouse-header {
     margin-bottom: 20px;
-    border-bottom: 1px solid #000; /* Add this line */
+    padding-left: 10px; /* Space after the border */
+    border-left: 4px solid #2e3a46; /* Dark blue left border */
+    font-size: 28px;
+    font-weight: 700;
+    color: #2e3a46;
 }
 
-
-/* Search container styling */
-.warehouse-search-container {
-   display:flex;
-   justify-content: space-between; /* Align elements to the start */
-   align-items: center;
-}
-
-.warehouse-search-container input {
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #dee2e6;
-    width: 70%;
-    box-sizing: border-box;
-    margin-right: 10px; /* Add some space between the input and the button */
-}
-
-.warehouse-search-container button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007BFF;
-    color: white;
-    cursor: pointer;
-}
-
-
-.warehouse-search-container button:hover {
-    background-color: #0056b3;
-}
-
-/* Warehouse item container styling */
-.warehouse-item-container {
+ 
+ /* Search container styling */
+ .warehouse-search-container {
     display: flex;
-    flex-wrap: wrap;
-}
-
-/* Warehouse items */
-.item {
-    padding: 20px;
-    background-color: #fff;
-    border: 1px solid #dee2e6;
-    margin: 20px;
-    display: flex;
-    flex-direction: column;
     justify-content: space-between;
-    align-items: flex-start;
-    border-radius: 5px;
-    width:400px;
-}
-
-/* Edit button styling */
-button {
-    margin-top: 20px;
-    align-self: center;
-}
+    align-items: center;
+ }
+ 
+ .warehouse-search-container input {
+     padding: 10px;
+     border-radius: 5px;
+     border: 1px solid #ccc;
+     width: 70%;
+     box-sizing: border-box;
+     margin-right: 10px; /* Space between the input and the button */
+ }
+ 
+ .warehouse-search-container button {
+     padding: 10px 20px;
+     border: none;
+     border-radius: 5px;
+     background-color: #00408a; /* Consistent primary blue color */
+     color: white;
+     cursor: pointer;
+     transition: background-color 0.3s, transform 0.2s;
+ }
+ 
+ .warehouse-search-container button:hover {
+     background-color: #003f8a; /* Darker blue on hover */
+     transform: translateY(-2px);
+     box-shadow: 0 4px 8px rgba(0, 63, 138, 0.2);
+ }
+ 
+ .warehouse-search-container button:active {
+     transform: translateY(0);
+     box-shadow: none;
+ }
+ 
+ /* Warehouse item container styling */
+ .warehouse-item-container {
+     display: flex;
+     flex-wrap: wrap;
+ }
+ 
+ /* Warehouse items */
+ .item {
+     padding: 20px;
+     background-color: #fff;
+     border: 1px solid #d1d1d1; /* Subtle grey border */
+     margin: 20px;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between;
+     align-items: flex-start;
+     border-radius: 6px;
+     width: 400px;
+ }
+ 
+ /* Edit button styling */
+ .item button {
+     margin-top: 20px;
+     align-self: center;
+     padding: 8px 16px;
+     border: none;
+     border-radius: 5px;
+     background-color: #00408a; /* Primary blue color */
+     color: white;
+     cursor: pointer;
+     font-size: 14px;
+     transition: background-color 0.3s, transform 0.2s;
+ }
+ 
+ .item button:hover {
+     background-color: #003f8a; /* Darker blue on hover */
+     transform: translateY(-2px);
+     box-shadow: 0 4px 8px rgba(0, 63, 138, 0.2);
+ }
+ 
+ .item button:active {
+     transform: translateY(0);
+     box-shadow: none;
+ }
+ 
