@@ -1,6 +1,6 @@
 /* Manage Pending Employees Button */
 .createEmployees button {
-  background-color: #0056b3; /* Flat blue color to match app's theme */
+  background-color: #00408a; /* Flat blue color to match app's theme */
   color: #ffffff;
   padding: 12px 24px; /* Consistent padding for better clickability */
   border: none;
@@ -23,7 +23,7 @@
 
 /* Make Manager Button */
 .employee-table button {
-  background-color: #0056b3; /* Flat blue color matching the app */
+  background-color: #00408a ;/* Flat blue color matching the app */
   color: #ffffff;
   padding: 10px 20px; /* Consistent padding */
   border: none;
