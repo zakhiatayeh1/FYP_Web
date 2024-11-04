@@ -1,223 +1,131 @@
-/*.byProduct-container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
-  
-  .byProduct-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    border-bottom: 1px solid #ccc;
-    padding: 1rem;
-  }
-  
-  .byProduct-content {
-    flex: 1;
-    overflow: auto;
-    padding: 1rem;
-  }
-  
-  .byProduct-grid {
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-}
-
-  .byProduct-card-container {
-    display: grid;
-    gap: 1rem;
-  }
-  
-  .byProduct-card {
-    border: 1px solid #ccc;
-    border-radius: 0.25rem;
-    background-color: white;
-    max-width: 500px;
-  }
-  
-  .byProduct-card-content {
-    padding: 1rem;
-  }
-  
-  .byProduct-image {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 1rem;
-  }
-
-
-#Purchase-page .new-Purchase {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    display: flex; 
-    align-items: center; 
-    box-shadow: 0 0 10px rgba(0,0,0,0.1); 
-}
-
-#Purchase-page .section-header {
-  background-color: #f0f0f0;
-  padding: 10px 20px;
-  margin: 0;
-  cursor: pointer;
-  font-size: 18px; 
-  border: none;
-  border-radius: 8px;
-}
-
-#Purchase-page .form-container {
-    padding: 20px;
-    background-color: white; 
-    border-radius: 8px; 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px; 
-}
-
-#Purchase-page .byProduct-container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 20px;
-}
-
-#Purchase-page .byProduct-card {
-  border: 1px solid #ccc;
-  border-radius: 0.25rem;
-  background-color: white;
-  max-width: 500px;
-  padding: 10px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-#Purchase-page input[type="text"], 
-#Purchase-page input[type="number"], 
-#Purchase-page input[type="date"] {
-    width: 100%; 
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-#Purchase-page .submit-btn {
-    width: 100%;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
-    margin-bottom: 10px;
-    cursor: pointer;
-}
-
-#Purchase-page .submit-btn:hover {
-    background-color: #0056b3;
-}
-
-#Purchase-page .byProduct-grid {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-}
-
-#Purchase-page .select-name, #Purchase-page input[type="text"], #Purchase-page input[type="number"], #Purchase-page input[type="date"] {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: white;
-  font-size: 16px;
-  color: #333;
-}*/
-
-
-
-/* New styles for full-screen layout */
-.manufacture-page-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.manufacture-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.MuiTableContainer-root {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  width: 97%;
-  margin-right: 20px;
-}
-
-.MuiTable-root {
-  flex: 1;
-}
-
-/* ... any other existing styles ... */
-
-/* Updated styles for full-screen layout */
+/* Container for Manufacture Table */
 .manufacture-div {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  width: 100%;
+  margin: 20px;
   padding: 20px;
-  box-sizing: border-box;
+  background-color: #ffffff; /* White background */
+  border-radius: 8px; /* Smooth rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  border: 1px solid #ccc; /* Light border for separation */
 }
 
-.manufacture-div > .MuiTypography-root {
-  margin-bottom: 20px;
+/* Title Styling */
+.manufacture-div h4 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #2e3a46; /* Consistent dark header color */
+  margin-bottom: 15px;
+  border-left: 4px solid #2e3a46; /* Consistent left border */
+  padding-left: 8px; /* Padding after border */
 }
 
-.manufacture-div > .MuiTableContainer-root {
-  height: calc(100vh - 200px); /* Adjust this value as needed */
-  overflow-y: auto;
+/* Table Container */
+.MuiTableContainer-root {
   width: 100%;
-  margin-right: 0;
 }
 
-.manufacture-div .MuiTable-root {
+/* Manufacture Table Styling */
+.MuiTable-root {
   width: 100%;
+  border-collapse: collapse;
+  font-family: 'Roboto', sans-serif;
+  margin-top: 10px;
 }
 
-.manufacture-div .MuiTableContainer-root > .MuiTextField-root {
-  margin-bottom: 20px;
+/* Header Row Styling */
+.MuiTableHead-root th {
+  background-color: #2e3a46; /* Dark header color */
+  color: #ffffff;
+  padding: 14px; /* Consistent padding */
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 2px solid #dddddd;
 }
 
-/* Fixed size for table rows */
-.manufacture-div .MuiTableRow-root {
-  height: 10px !important; /* Adjust this value to your preferred row height */
+/* Table Row and Data Styling */
+.MuiTableCell-root {
+  border: 1px solid #dddddd; /* Light border for separation */
+  padding: 12px; /* Consistent padding */
+  text-align: left;
+  color: #333; /* Darker text color for readability */
+  font-size: 14px;
 }
 
-/* Ensure table header stays at the top */
-.manufacture-div .MuiTableHead-root {
-  position: sticky;
-  top: 0;
-  background-color: #fff; /* or any color that matches your design */
-  z-index: 1;
+.MuiTableRow-root:hover {
+  background-color: #f4f4f4; /* Light gray hover effect */
+  cursor: pointer;
 }
 
-/* Style for table cells to ensure content fits */
-.manufacture-div .MuiTableCell-root {
-  padding: 8px 16px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+/* Quantity Input Field */
+input[type='number'] {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px; /* Smooth rounded corners */
+  width: 80px; /* Fixed width for alignment */
+  transition: border-color 0.3s;
 }
 
-/* Optional: Add some padding to the bottom of the table for better scrolling experience */
-.manufacture-div .MuiTableBody-root {
-  padding-bottom: 20px;
+input[type='number']:focus {
+  border-color: #0056b3; /* Blue border on focus */
+  box-shadow: 0 0 5px rgba(0, 86, 179, 0.3); /* Subtle blue glow */
 }
 
-/* ... any other existing styles ... */
+/* Manufacture Button Styling */
+.MuiButton-containedPrimary {
+  background-color: #0056b3 !important; /* Consistent blue color */
+  color: #ffffff !important;
+  padding: 10px 20px; /* Consistent padding */
+  border-radius: 6px; /* Smooth rounded corners */
+  font-size: 14px; /* Matches the app's button style */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Consistent shadow */
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+
+.MuiButton-containedPrimary:hover {
+  background-color: #00408a !important; /* Darker blue on hover */
+  transform: translateY(-2px); /* Lift effect on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+/* Search Input Field */
+.search-input {
+  margin: 15px 0 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px; /* Smooth rounded corners */
+  width: 300px;
+  font-size: 14px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .manufacture-div {
+    margin: 10px;
+    padding: 10px;
+  }
+
+  .MuiTable-root {
+    font-size: 14px;
+  }
+
+  .MuiTableCell-root {
+    padding: 8px; /* Reduced padding for smaller screens */
+  }
+
+  input[type='number'] {
+    width: 100%; /* Full width for smaller screens */
+  }
+
+  .MuiButton-containedPrimary {
+    font-size: 13px;
+    padding: 8px 16px; /* Adjusted padding for smaller screens */
+  }
+
+  .manufacture-div h4 {
+    font-size: 22px; /* Adjusted title font size for smaller screens */
+  }
+
+  .search-input {
+    width: 100%; /* Full width for smaller screens */
+  }
+}

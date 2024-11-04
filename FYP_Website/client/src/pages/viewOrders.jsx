@@ -128,9 +128,17 @@ function Orders() {
                             <TableCell>{formatDate(order.date_ordered)}</TableCell>
                             <TableCell style={{ color: new Date(formatDate(order.date_arrived)) - new Date(formatDate(order.date_ordered)) > order.lead_time ? 'red' : 'inherit' }}>{formatDate(order.date_arrived)}</TableCell>
                             <TableCell>{order.lead_time}</TableCell>
-                            <TableCell>{order.pending}</TableCell>
+                            <TableCell>{order.pending ? 'Pending' : 'Arrived'}</TableCell>
                             <TableCell>
-                                <Button variant="contained" color="primary" onClick={() => handleStatusChange(order.component_order_id, 'Arrived')}>Mark as Arrived</Button>
+                                {order.pending === 1 && (
+                                    <Button 
+                                        variant="contained" 
+                                        color="primary" 
+                                        onClick={() => handleStatusChange(order.component_order_id)}
+                                    >
+                                        Mark as Arrived
+                                    </Button>
+                                )}
                             </TableCell>
                         </TableRow>
                     ))}

@@ -1,3 +1,4 @@
+/* Orders Container */
 .orders-container {
     padding: 20px;
     margin: 10px;
@@ -7,22 +8,40 @@
     overflow: auto;
 }
 
+/* Title Styling */
 .orders-title {
     margin-bottom: 20px;
     font-size: 28px;
     color: #333;
     text-align: center;
 }
-.create-order-button {
-    padding: 10px 16px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    background-color: #007bff; /* Blue */
-    color: #fff;
+
+/* Create Order & View Orders Button */
+.create-order,
+.view-orders {
+    padding: 12px 24px; /* Increased padding for better clickability */
+    font-size: 15px; /* Matches employee page buttons */
+    background-color: #0056b3; /* Consistent blue color */
+    color: #ffffff;
+    border: none;
+    border-radius: 6px; /* Smooth rounded corners */
     cursor: pointer;
+    margin: 10px; /* Consistent margin */
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Consistent shadow */
 }
 
+.create-order:hover,
+.view-orders:hover {
+    background-color: #00408a; /* Darker blue on hover */
+    transform: translateY(-2px); /* Lift effect on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+/* Search Container */
 .search-container { 
     margin-bottom: 20px;
     display: flex;
@@ -30,6 +49,7 @@
     justify-content: center;
 }
 
+/* Search Select Dropdowns */
 .search-select {
     padding: 10px 16px;
     font-size: 16px;
@@ -39,38 +59,50 @@
     margin-bottom: 10px;
     background-color: #f0f5ff; /* Light blue */
     color: #333;
+    transition: border-color 0.3s;
 }
 
+.search-select:focus {
+    border-color: #0056b3; /* Consistent blue focus */
+    box-shadow: 0 0 5px rgba(0, 86, 179, 0.3); /* Subtle blue glow */
+}
+
+/* Orders List */
 .orders-list {
     list-style: none;
     padding: 0;
 }
 
+/* Individual Order Item */
 .order-item {
     margin-bottom: 20px;
     padding: 20px;
-    background-color: #fff;
+    background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Order Item Title */
 .order-item h2 {
     margin-bottom: 10px;
     font-size: 20px;
     color: #333;
 }
 
+/* Order Item Details */
 .order-item p {
     margin-bottom: 8px;
     font-size: 16px;
     color: #666;
 }
 
+/* Order Icon Styling */
 .order-icon {
     margin-right: 10px;
-    color: #007bff; /* Blue */
+    color: #0056b3; /* Consistent blue color */
 }
 
+/* Sort Icon Container */
 .sort-icon-container {
     display: flex;
     align-items: center;
@@ -78,23 +110,25 @@
 }
 
 .sort-icon {
-    font-size: 16px; /* Adjust the size as needed */
+    font-size: 16px;
     margin-left: 5px;
-    color: #666; /* Change the color as desired */
-}
-.create-order,
-.view-orders {
-  padding: 10px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 20px;
-  margin: 10px;
+    color: #666;
 }
 
-.create-order:hover,
-.view-orders:hover {
-  background-color: #0056b3;
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .create-order,
+    .view-orders {
+        font-size: 13px;
+        padding: 10px 20px; /* Adjusted padding for smaller screens */
+    }
+
+    .orders-title {
+        font-size: 24px;
+    }
+
+    .search-select {
+        width: 100%;
+        margin-right: 0;
+    }
 }

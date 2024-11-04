@@ -1,0 +1,220 @@
+/* General Page Container */
+.task-page-container {
+    padding: 20px 40px 20px 280px;
+    margin: 20px;
+    background-color: #f9f9f9; /* Original light background */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Add Task Section Header */
+.task-section-header {
+    font-size: 26px;
+    font-weight: 700;
+    color: #2e3a46; /* Original header color */
+    margin-bottom: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-left: 4px solid #2e3a46; /* Adds a left border for emphasis */
+    padding-left: 8px; /* Spacing after the border */
+}
+
+/* Add Task Form Styling */
+.add-task-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 25px;
+    padding: 20px 0;
+    margin-left: 10px;
+    background-color: #ffffff; /* White background for better contrast */
+    border: 1px solid #ccc; /* Light border for separation */
+    border-radius: 6px;
+    padding: 20px; /* Adds internal padding */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); /* Soft shadow */
+}
+
+.add-task-select,
+.add-task-input {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    width: 320px;
+    margin-bottom: 12px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.add-task-select:focus,
+.add-task-input:focus {
+    border-color: #0056b3; /* Original blue color */
+    box-shadow: 0 0 5px rgba(0, 86, 179, 0.3); /* Subtle blue glow */
+}
+
+.add-task-btn {
+    background-color: #0056b3; /* Original blue */
+    color: #ffffff;
+    padding: 12px 24px; /* Increased padding for better usability */
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    margin-top: 12px;
+    margin-left: 10px;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+
+.add-task-btn:hover {
+    background-color: #003f8a; /* Original darker blue on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 63, 138, 0.2); /* Stronger shadow on hover */
+}
+
+/* Filter Section Styling */
+.task-filter-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    margin-left: 10px;
+    background-color: #f1f1f1; /* Soft gray background for separation */
+    padding: 10px;
+    border-radius: 6px;
+    border-left: 4px solid #2e3a46; /* Left border for emphasis */
+}
+
+.task-filter-label {
+    font-size: 15px;
+    color: #2e3a46; /* Original color */
+}
+
+.task-filter-select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    transition: border-color 0.3s;
+}
+
+.task-filter-select:focus {
+    border-color: #0056b3;
+}
+
+/* Search Input */
+.task-search-input {
+    margin: 15px 0 20px 10px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 320px;
+    transition: border-color 0.3s;
+}
+
+.task-search-input:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 5px rgba(0, 86, 179, 0.3);
+}
+
+/* Table Container */
+.task-table-container {
+    margin-top: 20px;
+    margin-left: 10px;
+    width: 97%;
+    overflow-x: auto; /* Horizontal scroll for smaller screens */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+/* Table Styling */
+.task-table .MuiTable-root {
+    border-collapse: collapse;
+}
+
+.task-table .MuiTableCell-root {
+    padding: 14px;
+    font-size: 15px;
+    border-bottom: 1px solid #e0e0e0; /* Subtle border between rows */
+}
+
+.task-table .MuiTableHead-root {
+    background-color: #2e3a46; /* Original dark color */
+    color: #ffffff;
+}
+
+.task-table .MuiTableCell-head {
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.task-table .MuiTableBody-root tr:hover {
+    background-color: #f4f4f4; /* Softer hover effect */
+    cursor: pointer;
+}
+
+/* Complete Task Button & Add Task Button Consistency */
+.complete-task-btn,
+.add-task-btn {
+    background-color: #0056b3;
+    color: #ffffff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.complete-task-btn:hover,
+.add-task-btn:hover {
+    background-color: #003f8a;
+    box-shadow: 0 6px 12px rgba(0, 63, 138, 0.2);
+}
+
+/* Pagination Styling */
+.task-pagination .MuiTablePagination-root {
+    margin-top: 20px;
+    margin-left: 10px;
+    background-color: #f1f1f1; /* Soft gray background */
+    padding: 8px;
+    border-radius: 6px;
+}
+
+.task-pagination .MuiTablePagination-select {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .task-page-container {
+        padding: 20px 15px;
+    }
+
+    .add-task-form {
+        flex-direction: column;
+        padding: 10px 0;
+    }
+
+    .task-filter-container {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .task-search-input {
+        width: 100%;
+    }
+
+    .task-table .MuiTableCell-root {
+        font-size: 13px;
+    }
+
+    .add-task-select,
+    .add-task-input {
+        width: 100%;
+    }
+}

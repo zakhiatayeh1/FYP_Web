@@ -41,11 +41,11 @@ function Sidebar({sidebarOpen, setSidebarOpen}){
                 <FontAwesomeIcon icon={sidebarOpen ? faArrowLeft : faArrowRight} />
                 </button>
             <nav>
-            <Typography
+            {/* <Typography
               variant="h6"
               color={colors.grey[300]}
               sx={{ m: "15px 0 5px 20px" }}
-              >
+              > */}
      {/* <Box
        sx={{
          "& .pro-sidebar-inner": {
@@ -86,7 +86,7 @@ function Sidebar({sidebarOpen, setSidebarOpen}){
                                                         </Box> */}
 
 
-            </Typography>
+            {/* </Typography> */}
                 <ul className="nav-list">
                     <li className="nav-item">
                         <Link className="nav-link" to="/main"><FontAwesomeIcon icon={faHome} /> Home</Link>

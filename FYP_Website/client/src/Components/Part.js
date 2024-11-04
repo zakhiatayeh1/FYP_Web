@@ -43,7 +43,8 @@ function Part({id, uniqueId, name, type, description, image, modelNumber, editab
                 <p>Type: {type}</p>
                 <img className='part-image' src={image} alt={type} />
                 <p>Model: {modelNumber}</p>
-                <p>Quantity: {quantity2 !== undefined ? quantity2 : 6}</p>                {showDescription ? (
+                <p>Quantity: {quantity2}</p>               
+                 {showDescription ? (
                     <>
                         <p className='part-description'>Description: {description}</p>
                         <p className='toggle-description' onClick={toggleDescription}>Read Less</p>

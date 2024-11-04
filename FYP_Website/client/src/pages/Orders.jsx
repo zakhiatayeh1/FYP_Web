@@ -137,15 +137,15 @@ const Orders = () => {
 
     return (
         <div className="orders-container">
-            <button className='create-order' onClick={() => navigate('/main/createOrder')}>Create Order</button>
+            <button className='create-order' onClick={() => navigate('/main/createOrder')}>Create order</button>
             <button 
                 className='order-button view-orders' 
                 onClick={() => navigate('/main/viewOrders')}
                 style={{  }}
             >
-                View Orders
+                View upcoming orders
             </button>
-            <h1 className="orders-title">Previous Orders</h1>
+            <h1 className="orders-title">Previous Supplier Orders</h1>
             <div className="search-container">
                 {/* Sorting dropdown */}
                 <div className="sort-dropdown">

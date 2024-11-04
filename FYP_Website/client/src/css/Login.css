@@ -79,19 +79,19 @@
     padding: 10px;
     border: none;
     border-radius: 5px;
-    background-color: #007bff;
+    background-color: #00408a;
     color: white;
     cursor: pointer;
 }
 
 .sign-btn:hover {
-    background-color: #0056b3;
+    background-color:#00408a;
 }
 
 .link-btn {
     margin-top: 10px;
     color: white;
-    background-color: #007bff;
+    background-color: #00408a;
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
@@ -99,6 +99,6 @@
 }
 
 .link-btn:hover {
-    background-color: #0056b3;
+    background-color: #00408a;
     text-decoration: none;
 }

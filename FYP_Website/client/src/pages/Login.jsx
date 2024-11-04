@@ -71,7 +71,7 @@ export const Login = (props) => {
       
        console.log('going to main')
        if(sessionStorage.isadmin==1 || response.data[0].pending==0){
-        navigate('/main/dashboard')
+        navigate('/main/Trial_page')
        }else if(response.data[0].pending==1){
         alert('please wait until your account is approved, you will receive an email once it is approved')
        }

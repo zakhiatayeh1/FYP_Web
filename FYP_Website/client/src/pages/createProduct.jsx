@@ -171,19 +171,7 @@ function CreateProduct() {
             <h1>Create Product</h1>
             </div>
             <div style={{ textAlign: "left" }}>
-                <button style={{
-                    backgroundColor: "#007BFF", /* Blue */
-                    border: "none",
-                    color: "white",
-                    padding: "10px 20px", /* Smaller */
-                    textAlign: "center",
-                    textDecoration: "none",
-                    display: "inline-block",
-                    fontSize: "14px", /* Smaller */
-                    margin: "10px 2px",
-                    cursor: "pointer",
-                    borderRadius: "4px"
-                }} onClick={() => navigate('/main/createBikeType')}>Create Product Type</button>
+                
             </div>
 
             <form className='create-product-form' onSubmit={handleSubmit}>

@@ -11,6 +11,7 @@ const Parts = () => {
     useEffect(() => {
         axios.get('http://localhost:3001/parts')
             .then((response) => {
+                console.log('hii')
                 setParts(response.data);
                 console.log(response.data);
             })

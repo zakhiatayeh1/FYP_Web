@@ -1,3 +1,4 @@
+/* Create Warehouse Container */
 .create-warehouse-container {
     display: flex;
     flex-direction: column;
@@ -5,7 +6,8 @@
     align-items: center;
 }
 
-.create-warehouse-form-container{
+/* Create Warehouse Form Container */
+.create-warehouse-form-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,20 +15,22 @@
     width: 100%;
 }
 
+/* Create Warehouse Header Styling */
 .create-warehouse-header {
     width: 100%;
     color: #333;
     text-align: center;
-    font-size: 1em;
+    font-size: 24px; /* Increased for better visibility */
     margin-bottom: 20px;
     border-bottom: 1px solid #dee2e6;
     font-weight: bold;
 }
 
+/* Create Warehouse Form Styling */
 .create-warehouse-form {
     width: 90%;
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     align-items: center;
     background-color: #fff;
     padding: 20px;
@@ -36,6 +40,7 @@
     margin-right: 10px;
 }
 
+/* Label Styling */
 .create-warehouse-form label {
     width: 100%;
     margin-bottom: 10px;
@@ -44,6 +49,7 @@
     align-items: center;
 }
 
+/* Input Field Styling */
 .create-warehouse-form input,
 .create-warehouse-form textarea,
 .create-warehouse-form select {
@@ -52,10 +58,22 @@
     border: 1px solid #dee2e6;
     margin-right: 10px;
     margin-left: 10px;
-    width: 70%;
+    width: 70%; /* Consistent width for all inputs */
     box-sizing: border-box;
 }
 
+/* Number Input Adjustment */
+.create-warehouse-form input[type="number"] {
+    width: 70%; /* Set the same width as other inputs */
+    padding: 10px; /* Consistent padding */
+    border-radius: 5px;
+    border: 1px solid #dee2e6;
+    margin-right: 10px;
+    margin-left: 10px;
+    box-sizing: border-box;
+}
+
+/* Input Group Styling */
 .input-group {
     width: 100%;
     margin-bottom: 10px;
@@ -64,27 +82,38 @@
     align-items: center;
 }
 
+/* Error Message Styling */
 .error {
-    color: red; 
-    margin-top:0;
+    color: red;
+    margin-top: 0;
 }
 
+/* Textarea Styling */
 .create-warehouse-form textarea {
     resize: vertical;
     box-sizing: border-box;
 }
 
+/* Create Button Styling */
 .create-warehouse-form button {
     width: 100px;
     padding: 10px;
-    background-color: #007bff;
+    background-color: #0056b3; /* Consistent primary blue */
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     margin-top: 20px;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 .create-warehouse-form button:hover {
-    background-color: #0056b3;
+    background-color: #003f8a; /* Darker blue on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 63, 138, 0.2);
+}
+
+.create-warehouse-form button:active {
+    transform: translateY(0);
+    box-shadow: none;
 }

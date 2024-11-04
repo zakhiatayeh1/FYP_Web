@@ -1,275 +1,275 @@
 /* Home.css */
 .header {
-    background-color: #f0f0f0;
-    padding: 40px 20px;
-    text-align: center;
-  }
-  
-  .header-content {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .title {
-    color: #333;
-  }
-  
-  .subtitle {
-    color: #666;
-  }
-  
-  .links {
-    margin-top: 20px;
-  }
-  
-  .link {
-    color: #007bff; /* Default link color */
-    margin-right: 20px;
-    text-decoration: none;
-    transition: color 0.3s ease; /* Smooth color transition */
-    font-weight: bold; /* Make the text bold */
-  }
-  /* Home.css */
+  background-color: #f0f0f0;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.header-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.title {
+  color: #333;
+}
+
+.subtitle {
+  color: #666;
+}
+
+.links {
+  margin-top: 20px;
+}
+
+.link {
+  color: #007bff; /* Default link color */
+  margin-right: 20px;
+  text-decoration: none;
+  transition: color 0.3s ease; /* Smooth color transition */
+  font-weight: bold; /* Make the text bold */
+}
+/* Home.css */
 
 .dashboard-link {
-  display: inline-block;
-  margin-top: 20px; /* Adjust margin as needed */
-  padding: 10px 20px;
-  background-color: #007bff; /* Button background color */
-  color: #fff; /* Button text color */
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s ease-in-out;
+display: inline-block;
+margin-top: 20px; /* Adjust margin as needed */
+padding: 10px 20px;
+background-color: #00408a; /* Button background color */
+color: #fff; /* Button text color */
+text-decoration: none;
+border-radius: 5px;
+transition: background-color 0.3s ease-in-out;
 }
 
 .dashboard-link:hover {
-  background-color: #0056b3; /* Change background color on hover */
+background-color: #00408a; /* Change background color on hover */
 }
 
 .dashboard-link .button-icon {
-  margin-left: 5px; /* Adjust icon spacing */
+margin-left: 5px; /* Adjust icon spacing */
 }
 
-  
-  .link:hover {
-    color: #0056b3; /* Color when hovered */
-  }
-  
-  
-  
-  .chart-card {
-    margin-bottom: 20px;
-  }
-  
-  .introduction {
-    background-color: #f9f9f9;
-    padding: 40px 20px;
-    text-align: center;
-  }
-  
-  .introduction h3 {
-    margin-bottom: 20px;
-  }
-  
-  .introduction p {
-    color: #666;
-  }
-  
-  /* Animation */
-  .scroll-down {
-    margin-top: 40px;
-    color: #666;
-    cursor: pointer;
-    animation: bounce 2s infinite;
-  }
-  
-  
+
+.link:hover {
+  color: #00408a; /* Color when hovered */
+}
+
+
+
+.chart-card {
+  margin-bottom: 20px;
+}
+
+.introduction {
+  background-color: #f9f9f9;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.introduction h3 {
+  margin-bottom: 20px;
+}
+
+.introduction p {
+  color: #666;
+}
+
+/* Animation */
+.scroll-down {
+  margin-top: 40px;
+  color: #666;
+  cursor: pointer;
+  animation: bounce 2s infinite;
+}
+
+
 .animated-title {
-    animation: bounce 2s infinite;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
   }
-  
-  @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-      transform: translateY(0);
-    }
-    40% {
-      transform: translateY(-20px);
-    }
-    60% {
-      transform: translateY(-10px);
-    }
-  }                               
-  
+  40% {
+    transform: translateY(-20px);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
+}                               
+
 .home-container {
-  background-image:" whitesmoke"; /* Adjust the grey shade here */
-  margin: 40px 20px; /* Add more padding for spacing */
+background-image:" whitesmoke"; /* Adjust the grey shade here */
+margin: 40px 20px; /* Add more padding for spacing */
 }
 
 /* Header style */
 .header {
-  background-color: #f7f9fc; /* Adjust the blue shade here */
-  color: #fff;
-  text-align: center;
-  border-radius: 10px 10px 0 0; /* Rounded corners at the top */
+background-color: #f7f9fc; /* Adjust the blue shade here */
+color: #fff;
+text-align: center;
+border-radius: 10px 10px 0 0; /* Rounded corners at the top */
 }
 
 /* Title style */
 .title {
-  font-size: 36px;
-  margin-bottom: 10px;
-  font-weight: bold;
+font-size: 36px;
+margin-bottom: 10px;
+font-weight: bold;
 }
 
 /* Subtitle style */
 .subtitle {
-  font-size: 18px;
-  margin-bottom: 20px;
+font-size: 18px;
+margin-bottom: 20px;
 }
 
 /* Links style */
 .links {
-  display: flex;
-  justify-content: center;
+display: flex;
+justify-content: center;
 }
 
 .link {
-  margin: 0 10px;
-  color: #aebfef;
-  text-decoration: none;
-  transition: color 0.3s ease;
+margin: 0 10px;
+color: #aebfef;
+text-decoration: none;
+transition: color 0.3s ease;
 }
 
 .link:hover {
-  color: #0056b3;
+color: #0056b3;
 }
 
 
 .key-features, .benefits {
-    margin-bottom: 40px;
-  }
-  
-  .features-container, .benefits-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  
-  .feature, .benefit {
-    width: calc(50% - 20px); /* 50% width with margin between elements */
-    margin-bottom: 20px;
-  }
-  
-  .icon {
-    font-size: 36px;
-    margin-right: 20px;
-  }
-  
-  .description h3 {
-    margin-bottom: 10px;
-  }
-  
-  .description p {
-    color: #555;
-  }
- 
-.hero {
-    position: relative;
-    height: 550px;
-    background-image: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1717386255773-1e3037c81788?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8bWFudWZhY3R1cmluZ3xlbnwwfHwwfHx8MA%3D%3D'); /* Replace with your background image */
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff; /* Text color */
-    text-align: center;
-;
-  }
-  
-  .hero-content {
-    position: relative;
-    z-index: 1; /* Ensure text appears above the overlay */
-    max-width: 600px;
-  }
-  
-  .hero h1 {
-    font-size: 40px;
-    margin-bottom: 20px;
-  }
-  
-  .hero p {
-    font-size: 20px;
-    margin-bottom: 30px;
-  }
-  
-  .cta-button {
-    display: inline-block;
-    background-color: #007bff;
-    color: #fff;
-    padding: 12px 24px;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-  }
-  
-  .cta-button:hover {
-    background-color: #0056b3;
-  }
-  
-  .button-icon {
-    margin-left: 10px;
-  }
-
-  .chart-container{
-    margin: 20px;
-  }
-  /* Home.css */
-/* Home.css */
-.graph-benefits {
-  background-color: #f9f9f9; /* Light gray background */
-  padding: 40px 20px;
-  text-align: center;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  margin-bottom: 40px;
 }
 
-.graph-benefits h2 {
-  font-size: 28px;
+.features-container, .benefits-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.feature, .benefit {
+  width: calc(50% - 20px); /* 50% width with margin between elements */
   margin-bottom: 20px;
-  color: #333; /* Dark text color */
 }
 
-.graph-benefits p {
-  font-size: 18px;
-  color: #666; /* Medium dark text color */
+.icon {
+  font-size: 36px;
+  margin-right: 20px;
+}
+
+.description h3 {
+  margin-bottom: 10px;
+}
+
+.description p {
+  color: #555;
+}
+
+.hero {
+  position: relative;
+  height: 550px;
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1717386255773-1e3037c81788?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8bWFudWZhY3R1cmluZ3xlbnwwfHwwfHx8MA%3D%3D'); /* Replace with your background image */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff; /* Text color */
+  text-align: center;
+;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1; /* Ensure text appears above the overlay */
+  max-width: 600px;
+}
+
+.hero h1 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 20px;
   margin-bottom: 30px;
 }
 
+.cta-button {
+  display: inline-block;
+  background-color: #00408a;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #00408a;
+}
+
+.button-icon {
+  margin-left: 10px;
+}
+
+.chart-container{
+  margin: 20px;
+}
+/* Home.css */
+/* Home.css */
+.graph-benefits {
+background-color: #f9f9f9; /* Light gray background */
+padding: 40px 20px;
+text-align: center;
+border-radius: 10px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+.graph-benefits h2 {
+font-size: 28px;
+margin-bottom: 20px;
+color: #333; /* Dark text color */
+}
+
+.graph-benefits p {
+font-size: 18px;
+color: #666; /* Medium dark text color */
+margin-bottom: 30px;
+}
+
 .graph-benefits ul {
-  list-style: none;
-  padding: 0;
-  margin: 0 auto;
-  max-width: 600px; /* Center align and limit width */
+list-style: none;
+padding: 0;
+margin: 0 auto;
+max-width: 600px; /* Center align and limit width */
 }
 
 .graph-benefits li {
-  margin-bottom: 20px;
-  font-size: 16px;
-  color: #555; /* Medium text color */
-  display: flex;
-  align-items: center;
+margin-bottom: 20px;
+font-size: 16px;
+color: #555; /* Medium text color */
+display: flex;
+align-items: center;
 }
 
 .graph-benefits li::before {
-  content: "\2022"; /* Bullet character */
-  color: #007bff; /* Bullet color */
-  font-weight: bold;
-  display: inline-block;
-  width: 1em;
-  margin-right: 10px;
+content: "\2022"; /* Bullet character */
+color: #007bff; /* Bullet color */
+font-weight: bold;
+display: inline-block;
+width: 1em;
+margin-right: 10px;
 }
 
 .graph-benefits li:last-child {
-  margin-bottom: 0; /* Remove bottom margin from last item */
+margin-bottom: 0; /* Remove bottom margin from last item */
 }
 
