@@ -237,14 +237,16 @@ const Trial_page = () => {
                 <Tooltip 
                   content={({ active, payload }) => {
                     if (active && payload && payload.length) {
-                      const supplierName = suppliersData[payload[0].payloadIndex].supplierName;
+                      // const supplierName = suppliersData[payload[0].payloadIndex].supplierName;
 
                       return (
                         <div style={{ backgroundColor: '#000', padding: '10px', border: '1px solid #ccc', color: '#fff' }}>
-                          <p>{`Supplier: ${supplierName}`}</p>
+                          {/* <p>{`Supplier: ${supplierName}`}</p> */}
+                          {/* <p>{`${JSON.stringify(payload)}`}</p> */}
+                          <p>{`${payload[1].payload.supplier}`}</p>
                           <p>{`Orders: ${payload[0].value}`}</p>
                           <p>{`Avg. Delivery Time: ${payload[1].value} Days`}</p>
-                          <p>{`Total Expenses: ${payload[2].value}`}</p>
+                          {/* <p>{`Total Expenses: ${payload[2].value}`}</p> */}
                         </div>
                       );
                     }
@@ -338,7 +340,8 @@ const Trial_page = () => {
                       return null;
                     }
                 }}
-              />              <Legend />
+              />   
+                         <Legend />
               
               <Bar yAxisId="left" dataKey="orders" fill={COLORS[0]} name="Total Orders">
                 {OurordersData.map((entry, index) => (
