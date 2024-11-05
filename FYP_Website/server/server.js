@@ -2724,7 +2724,7 @@ LEFT JOIN (
     LEFT JOIN 
         (SELECT model_id, COUNT(*) AS total_rows_per_model 
          FROM produced_byproduct 
-         WHERE sold = 0
+         WHERE sold = 0 and isproduced=1
          GROUP BY model_id) AS px
     ON xx.model_id = px.model_id 
 ) AS calc
