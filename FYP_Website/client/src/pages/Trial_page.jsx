@@ -243,7 +243,7 @@ const Trial_page = () => {
                         <div style={{ backgroundColor: '#000', padding: '10px', border: '1px solid #ccc', color: '#fff' }}>
                           {/* <p>{`Supplier: ${supplierName}`}</p> */}
                           {/* <p>{`${JSON.stringify(payload)}`}</p> */}
-                          <p>{`${payload[1].payload.supplier}`}</p>
+                          <p>{`Supplier: ${payload[1].payload.supplier}`}</p>
                           <p>{`Orders: ${payload[0].value}`}</p>
                           <p>{`Avg. Delivery Time: ${payload[1].value} Days`}</p>
                           {/* <p>{`Total Expenses: ${payload[2].value}`}</p> */}

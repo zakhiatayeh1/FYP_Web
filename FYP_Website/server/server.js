@@ -2323,7 +2323,7 @@ app.post('/updateModel', (req, res) => {
       `
       select bs.byproduct_storage_id, floor(bs.byproduct_storage_capacity*m.percentage/100) as available_space
 from
-model as m join byproduct_storage as bs on bs.byproduct_storage_id = m.bike_category_id where m.model_id=2
+model as m join byproduct_storage as bs on bs.byproduct_storage_id = m.bike_category_id where m.model_id=?
     `;
     
       db.query(query, [modelID], (err, result) => {
