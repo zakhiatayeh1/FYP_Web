@@ -2173,7 +2173,7 @@ FROM
     FROM 
         model AS m
     LEFT JOIN 
-        produced_byproduct AS pb ON m.model_id = pb.model_id
+        produced_byproduct AS pb ON m.model_id = pb.model_id AND pb.sold=0
     GROUP BY 
         m.model_id, m.name, m.bike_type_id) AS q 
 JOIN 
