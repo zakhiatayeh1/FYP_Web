@@ -335,6 +335,7 @@ const handleCheckComponentsAndManufacture = async (model_id, quantity) => {
 
                         <TableCell>Quantity to manufacture</TableCell>
                         <TableCell>AI estimated quantity</TableCell>
+                        <TableCell>Maximum allowed storage</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -356,6 +357,8 @@ const handleCheckComponentsAndManufacture = async (model_id, quantity) => {
                             </TableCell>
                             {/* <TableCell>0</TableCell> */}
                             <TableCell>{model.AIquantity}</TableCell>
+                            {/* {console.log(availableSpace)} */}
+                            <TableCell>{model.ABC_ceiling}</TableCell>
                             <TableCell>
                             <Button 
                                 variant="contained" 
