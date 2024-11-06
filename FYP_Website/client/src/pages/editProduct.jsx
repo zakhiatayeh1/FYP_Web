@@ -271,12 +271,12 @@ function EditProduct() {
                     </label>
                 </div>
                     {production_timeError && <p className="error">{production_timeError}</p>}
-                    <div className='input-group'>
+                    {/* <div className='input-group'>
                     <label>
                         Percentage:
                         <input type="number" value={percentage} onChange={handlePercentageChange} />
                     </label>
-                </div>
+                </div> */}
                     {percentageError && <p className="error">{percentageError}</p>}
                     <br />
                     <button className='btn btn-primary' type="submit">Edit</button>

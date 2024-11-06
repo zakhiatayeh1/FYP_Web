@@ -2163,19 +2163,21 @@ SELECT
     q.model_id, 
     q.name, 
     COALESCE(q.quantity, 0) AS quantity,
-    bt.bike_type 
+    bt.bike_type ,
+	q.ABC_ceiling
 FROM 
     (SELECT  
         m.model_id, 
         m.name, 
         m.bike_type_id, 
-        COUNT(pb.byproduct_id) AS quantity
+        COUNT(pb.byproduct_id) AS quantity,
+        m.ABC_ceiling
     FROM 
         model AS m
     LEFT JOIN 
-        produced_byproduct AS pb ON m.model_id = pb.model_id
+        produced_byproduct AS pb ON m.model_id = pb.model_id AND pb.sold=0
     GROUP BY 
-        m.model_id, m.name, m.bike_type_id) AS q 
+        m.model_id, m.name, m.bike_type_id,m.ABC_ceiling) AS q 
 JOIN 
     bike_type AS bt ON bt.bike_type_id = q.bike_type_id
 
@@ -2236,7 +2238,7 @@ JOIN
 app.get('/availableStorage', (req, res) => {
   const model_id = req.query.model_id;
   const query = `
-    SELECT FLOOR(xx.byproduct_storage_capacity*xx.percentage-px.total_rows_per_model) AS remaining_capacity_for_model 
+    SELECT FLOOR(xx.byproduct_storage_capacity*xx.percentage/100-px.total_rows_per_model) AS remaining_capacity_for_model 
     FROM
     (SELECT model_id, bike_category_id, byproduct_storage_capacity, bike_type_id, byproduct_storage_current_stock, percentage 
     FROM model AS mo 
@@ -2323,7 +2325,7 @@ app.post('/updateModel', (req, res) => {
       `
       select bs.byproduct_storage_id, floor(bs.byproduct_storage_capacity*m.percentage/100) as available_space
 from
-model as m join byproduct_storage as bs on bs.byproduct_storage_id = m.bike_category_id where m.model_id=2
+model as m join byproduct_storage as bs on bs.byproduct_storage_id = m.bike_category_id where m.model_id=?
     `;
     
       db.query(query, [modelID], (err, result) => {
@@ -2707,6 +2709,28 @@ JOIN (
 ) AS subquery
 ON m.bike_category_id = subquery.bike_category_id
 SET m.percentage = (m.storage_coefficient * 100 / subquery.total_coefficient);
+
+
+UPDATE model AS mm
+LEFT JOIN (
+    SELECT 
+        xx.model_id,
+        FLOOR(xx.byproduct_storage_capacity * xx.percentage / 100 - COALESCE(px.total_rows_per_model, 0)) AS remaining_capacity_for_model
+    FROM
+        (SELECT model_id, bike_category_id, byproduct_storage_capacity, bike_type_id, byproduct_storage_current_stock, percentage 
+         FROM model AS mo 
+         JOIN byproduct_storage AS bs 
+         ON mo.bike_category_id = bs.byproduct_storage_id) AS xx
+    LEFT JOIN 
+        (SELECT model_id, COUNT(*) AS total_rows_per_model 
+         FROM produced_byproduct 
+         WHERE sold = 0 and isproduced=1
+         GROUP BY model_id) AS px
+    ON xx.model_id = px.model_id 
+) AS calc
+ON mm.model_id = calc.model_id
+SET mm.ABC_ceiling = calc.remaining_capacity_for_model;
+
 
 `
   db.query(query, (err, result) => {

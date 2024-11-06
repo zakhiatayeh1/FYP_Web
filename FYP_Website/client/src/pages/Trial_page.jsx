@@ -224,19 +224,37 @@ const Trial_page = () => {
 
       <div className="main-content">
       <div className="chart-box">
-            <h3>Supplier Orders</h3>
+            <h3>Supplier orders</h3>
             <BarChart width={1150} height={350} data={suppliersData}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <YAxis yAxisId="left" orientation="left" stroke="#808080" />
                 <YAxis yAxisId="right" orientation="right" stroke="#808080" />
-                {/* <YAxis yAxisId="right" orientation="right" stroke="#2ecc71" />                <Tooltip /> */}
                 <Legend 
                     formatter={(value, entry, index) => (
                       <span style={{ color: '#808080' }}>{value}</span>
                   )}
                 />
-    <Bar dataKey="orders" fill="#2ecc71" name="Orders" yAxisId="right" /> {/* Bright green */}
-    <Bar dataKey="deliveryTime" fill="#16a085" name="Avg. Delivery Time (Days)" yAxisId="left" /> {/* Darker green */}
+                <Tooltip 
+                  content={({ active, payload }) => {
+                    if (active && payload && payload.length) {
+                      // const supplierName = suppliersData[payload[0].payloadIndex].supplierName;
+
+                      return (
+                        <div style={{ backgroundColor: '#000', padding: '10px', border: '1px solid #ccc', color: '#fff' }}>
+                          {/* <p>{`Supplier: ${supplierName}`}</p> */}
+                          {/* <p>{`${JSON.stringify(payload)}`}</p> */}
+                          <p>{`Supplier: ${payload[1].payload.supplier}`}</p>
+                          <p>{`Orders: ${payload[0].value}`}</p>
+                          <p>{`Avg. Delivery Time: ${payload[1].value} Days`}</p>
+                          {/* <p>{`Total Expenses: ${payload[2].value}`}</p> */}
+                        </div>
+                      );
+                    }
+                    return null;
+                  }}
+                />
+                <Bar dataKey="orders" fill="#2ecc71" name="Orders" yAxisId="right" /> {/* Bright green */}
+                <Bar dataKey="deliveryTime" fill="#16a085" name="Avg. Delivery Time (Days)" yAxisId="left" /> {/* Darker green */}
             </BarChart>
       </div>
         {/* <div className="stat-box-container">
@@ -295,10 +313,10 @@ const Trial_page = () => {
         
         <div style={{ display: 'flex', width: '100%' }}>
               <div style={{ width: '50%', textAlign: 'left', padding: '0px'}}>
-                <h3>Total Orders:{OurordersData.reduce((total, data) => total + data.orders, 0)}</h3>
+                <h3>Total orders: {OurordersData.reduce((total, data) => total + data.orders, 0)}</h3>
               </div>
               <div style={{ width: '50%', textAlign: 'left', padding: '0px' }}>
-                <h3>Total Expenses: ${totalExpenses}</h3>
+                <h3>Total expenses: ${totalExpenses}</h3>
               </div>
         </div>
             <BarChart width={800} height={200} data={OurordersData}>
@@ -306,13 +324,31 @@ const Trial_page = () => {
               <XAxis dataKey="month" />
               <YAxis yAxisId="left" />
               <YAxis yAxisId="right" orientation="right" />
-              <Tooltip />
-              <Legend />
+              <Tooltip 
+                content={({ active, payload }) => {
+                    if (active && payload && payload.length) {
+                      const month = payload[0]?.payload?.month || 1;
+                      const totalOrders = payload[0]?.value !== undefined ? payload[0].value : 1;
+                      const totalExpenses = payload[1]?.value !== undefined ? payload[1].value : 1;
+
+                      return (
+                        <div style={{ backgroundColor: '#000', padding: '10px', border: '1px solid #ccc', color: '#fff' }}>
+                          <p>{`Total Orders: ${totalOrders}`}</p>
+                          <p>{`Total Expenses:  $${totalExpenses}`}</p>
+                        </div>
+                      );
+                      return null;
+                    }
+                }}
+              />   
+                         <Legend />
+              
               <Bar yAxisId="left" dataKey="orders" fill={COLORS[0]} name="Total Orders">
                 {OurordersData.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                 ))}
               </Bar>
+              
               <Bar yAxisId="right" dataKey="expenses" fill={COLORS[1]} name="Total Expenses">
                 {OurordersData.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={COLORS[(index + 2) % COLORS.length]} />
@@ -336,7 +372,7 @@ const Trial_page = () => {
 
 
         <div className="product-warehouse-distribution lower-box">
-            <h3>Inventory Breakdown for the Parts warehouse</h3>
+            <h3>Inventory breakdown for the parts warehouse</h3>
             <BarChart width={750} height={220} data={sortedInventoryData} layout="vertical">
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis type="number" />
@@ -346,10 +382,10 @@ const Trial_page = () => {
                       if (active && payload && payload.length) {
                           return (
                               <div style={{ 
-                                  backgroundColor: '#fff', 
+                                  backgroundColor: '#000', 
                                   padding: '0px', 
                                   border: '1px solid #ccc',
-                                  color: 'green'  // This sets the font color to green
+                                  // color: 'green'  // This sets the font color to green
                               }}>
                                   <p>{`${payload[0].name} : ${payload[0].value.toFixed(2)}%`}</p>
                               </div>
