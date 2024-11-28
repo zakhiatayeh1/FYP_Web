@@ -170,6 +170,7 @@ const PurchaseReceipt = ({ order }) => {
             <Page size="A4" style={styles.page}>
                 <View style={styles.headerRow}>
                     <Image style={styles.logo} src={logo} />
+                    <Text style={styles.header}>Bike Chain</Text>
                     <Text style={styles.header}>Purchase Receipt</Text>
                 </View>
 

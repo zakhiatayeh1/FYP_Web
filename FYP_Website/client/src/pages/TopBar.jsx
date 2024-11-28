@@ -65,7 +65,7 @@ function TopBar() {
           <AppBar position="static" sx={{ backgroundColor: "#252936" }}>
             <Toolbar>
               <Typography variant="h6" sx={{ flexGrow: 1, backgroundColor: "#252936", margin:0 }}>
-                Pedal SCM
+                Bike Chain
               </Typography>
                 {/* <IconButton color="inherit">
                   <Badge badgeContent={4} color="error">
@@ -83,7 +83,7 @@ function TopBar() {
             </AppBar>
           </Box>
               {/* <div className="User">
-                  <h2 id="welcomeMessage" style={{ color: 'white' }}>Pedal SCM </h2>
+                  <h2 id="welcomeMessage" style={{ color: 'white' }}>Bike Chain </h2>
               </div>
               <div className='User'>
                   

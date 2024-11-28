@@ -515,8 +515,8 @@ const TaskAssignment = () => {
         onChange={(e) => setSelectedCompletion(e.target.value)}
       >
         <option value="">All Tasks</option>
-        <option key={1} value={1}>1</option>
-        <option key={0} value={0}>0</option>
+        <option key={1} value={1}>Complete</option>
+        <option key={0} value={0}>Not complete</option>
       </select>
     </div>
 
