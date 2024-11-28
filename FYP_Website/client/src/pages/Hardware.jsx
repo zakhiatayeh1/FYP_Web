@@ -1120,7 +1120,7 @@
 //IMAGE DISPLAY
 
 import React, { useState, useEffect } from 'react';
-import Papa from 'papaparse';
+// import Papa from 'papaparse';
 
 const Hardware = () => {
   const [receivedData, setReceivedData] = useState(null);
@@ -1133,6 +1133,8 @@ const Hardware = () => {
   const [defectStatus, setDefectStatus] = useState(null); // State for defect status
   const [csvData, setCsvData] = useState([]);
   const [loadingCsv, setLoadingCsv] = useState(true);
+  const [csvVisible, setCsvVisible] = useState(true); // State to control CSV visibility
+
   const [csvError, setCsvError] = useState(null);
 
   // Automatically load CSV file on component mount
@@ -1150,12 +1152,20 @@ const Hardware = () => {
       .then(data => {
         setCsvData(data);  // Update state with the fetched data
         setLoadingCsv(false);
+        // setCsvVisible(false); // Initially hide the CSV table
+
       })
       .catch(error => {
         setCsvError(error);
         setLoadingCsv(false);
       });
   }, []);
+
+  // useEffect(() => {
+  //   if (csvData) {
+  //     setCsvVisible(false); // Hide CSV table when data changes
+  //   }
+  // }, [csvData])
 
   // WebSocket and other logic
   useEffect(() => {
@@ -1222,7 +1232,9 @@ const Hardware = () => {
     })
     .then((data) => {
         console.log(data); // Log success message from the backend
-        alert('Components fetched and stock updated!');
+        // alert('Components fetched and stock updated!');
+        setCsvVisible(false); // dont Show the CSV table after fetching
+
     })
     .catch((error) => {
         console.error('Error:', error);
@@ -1295,9 +1307,9 @@ const Hardware = () => {
       )}
 
       {/* Display CSV Data */}
-      {csvData.length > 0 && (
+      {csvVisible && csvData.length > 0 && (
         <div style={{ marginTop: '20px', border: '1px solid #ccc', borderRadius: '8px', padding: '15px', backgroundColor: '#f9f9f9' }}>
-          <h2>CSV Data</h2>
+          <h2>Missing Components</h2>
           <table style={{ width: '100%', borderCollapse: 'collapse' }}>
             <thead>
               <tr>
@@ -1323,7 +1335,7 @@ const Hardware = () => {
             style={{
               marginTop: '15px', 
               padding: '10px 20px', 
-              backgroundColor: '#4CAF50', 
+              backgroundColor: '#2e3a46 !important', 
               color: 'white', 
               border: 'none', 
               borderRadius: '5px',
@@ -1337,16 +1349,19 @@ const Hardware = () => {
        {/* Display Image */}
 <div style={{ marginTop: '20px' }}>
 <h2>Received Image</h2>
+<div width='50%'>
+
 <img
   src="http://localhost:4000/image"
   alt="Received"
   style={{
-    maxWidth: '100%',
-    height: 'auto',
-    border: '1px solid #ccc',
+    maxWidth: '10% !important',
+    width: '600px',
+    border: '5px solid #ccc',
     borderRadius: '5px',
   }}
 />
+  </div>
 </div>
     </div>
   );

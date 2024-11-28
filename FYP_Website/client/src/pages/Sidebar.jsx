@@ -91,6 +91,9 @@ function Sidebar({sidebarOpen, setSidebarOpen}){
                     <li className="nav-item">
                         <Link className="nav-link" to="/main"><FontAwesomeIcon icon={faHome} /> Home</Link>
                     </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="Trial_page"><FontAwesomeIcon icon={faDashboard} /> Dashboard</Link>
+                    </li>
                     {isAdmin == 1 && (
                         <li className="nav-item">
                         <Link className="nav-link" to="employees"><FontAwesomeIcon icon={faUsers} /> Employees</Link>
@@ -120,14 +123,11 @@ function Sidebar({sidebarOpen, setSidebarOpen}){
                     <li className="nav-item">
                         <Link className="nav-link" to="parts"><FontAwesomeIcon icon={faCogs} /> Parts</Link>
                     </li>
-                    <li className="nav-item">
+                    {/* <li className="nav-item">
                         <Link className="nav-link" to="Dashboard"><FontAwesomeIcon icon={faDashboard} /> Dashboard</Link>
-                    </li>
+                    </li> */}
                     <li className="nav-item">
                         <Link className="nav-link" to="Hardware"><FontAwesomeIcon icon={faDashboard} /> System control</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="Trial_page"><FontAwesomeIcon icon={faDashboard} /> Trial page</Link>
                     </li>
                 </ul>
             </nav>
