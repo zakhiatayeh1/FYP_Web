@@ -114,8 +114,8 @@ from inference_sdk import InferenceHTTPClient
 import pandas as pd
 
 async def receive_image():
-    # uri = "ws://172.20.10.2:8765"  # Replace with the Raspberry Pi IP (3G)
-    uri = "ws://192.168.1.14:8765"  # HOME WIFI
+    uri = "ws://172.20.10.2:8765"  # Replace with the Raspberry Pi IP (3G)
+    #uri = "ws://192.168.1.14:8765"  # HOME WIFI
     timeout_duration = 30  # Set your desired timeout duration (in seconds)
 
     async with websockets.connect(uri, timeout=timeout_duration) as websocket:
